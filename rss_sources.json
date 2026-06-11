@@ -1,0 +1,362 @@
+{
+  "_说明": "RSS 新闻源配置文件。每个源包含 name/url/country/region/language/enabled 字段。",
+  "_维护": "可直接编辑此文件增删新闻源，无需修改 Python 代码。enabled=false 的源会被跳过。",
+  "_版本": "2.0",
+
+  "feeds": [
+    {
+      "name": "CNN",
+      "url": "http://rss.cnn.com/rss/edition.rss",
+      "country": "美国",
+      "region": "北美",
+      "language": "en",
+      "type": "rss",
+      "enabled": true
+    },
+    {
+      "name": "New York Times",
+      "url": "https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml",
+      "country": "美国",
+      "region": "北美",
+      "language": "en",
+      "type": "rss",
+      "enabled": true
+    },
+    {
+      "name": "Wall Street Journal",
+      "url": "https://feeds.a.dj.com/rss/RSSWorldNews.xml",
+      "country": "美国",
+      "region": "北美",
+      "language": "en",
+      "type": "rss",
+      "enabled": true
+    },
+    {
+      "name": "Washington Post",
+      "url": "https://feeds.washingtonpost.com/rss/world",
+      "country": "美国",
+      "region": "北美",
+      "language": "en",
+      "type": "rss",
+      "enabled": true
+    },
+    {
+      "name": "NPR",
+      "url": "https://feeds.npr.org/1001/rss.xml",
+      "country": "美国",
+      "region": "北美",
+      "language": "en",
+      "type": "rss",
+      "enabled": true
+    },
+    {
+      "name": "USA Today",
+      "url": "https://rssfeeds.usatoday.com/usatoday-NewsTopStories",
+      "country": "美国",
+      "region": "北美",
+      "language": "en",
+      "type": "rss",
+      "enabled": true
+    },
+
+    {
+      "name": "BBC",
+      "url": "http://feeds.bbci.co.uk/news/world/rss.xml",
+      "country": "英国",
+      "region": "欧洲",
+      "language": "en",
+      "type": "rss",
+      "enabled": true
+    },
+    {
+      "name": "The Guardian",
+      "url": "https://www.theguardian.com/world/rss",
+      "country": "英国",
+      "region": "欧洲",
+      "language": "en",
+      "type": "rss",
+      "enabled": true
+    },
+    {
+      "name": "The Economist",
+      "url": "https://www.economist.com/feeds/print-sections/77/international.xml",
+      "country": "英国",
+      "region": "欧洲",
+      "language": "en",
+      "type": "rss",
+      "enabled": true
+    },
+    {
+      "name": "Reuters",
+      "url": "https://www.reutersagency.com/feed/",
+      "country": "英国",
+      "region": "欧洲",
+      "language": "en",
+      "type": "rss",
+      "enabled": true
+    },
+
+    {
+      "name": "Le Monde",
+      "url": "https://www.lemonde.fr/rss/une.xml",
+      "country": "法国",
+      "region": "欧洲",
+      "language": "fr",
+      "type": "rss",
+      "enabled": true
+    },
+    {
+      "name": "Le Figaro",
+      "url": "https://www.lefigaro.fr/rss/figaro_actualites.xml",
+      "country": "法国",
+      "region": "欧洲",
+      "language": "fr",
+      "type": "rss",
+      "enabled": true
+    },
+    {
+      "name": "France 24 (EN)",
+      "url": "https://www.france24.com/en/rss",
+      "country": "法国",
+      "region": "欧洲",
+      "language": "en",
+      "type": "rss",
+      "enabled": true
+    },
+
+    {
+      "name": "Der Spiegel",
+      "url": "https://www.spiegel.de/schlagzeilen/index.rss",
+      "country": "德国",
+      "region": "欧洲",
+      "language": "de",
+      "type": "rss",
+      "enabled": true
+    },
+    {
+      "name": "Deutsche Welle",
+      "url": "https://rss.dw.com/rdf/rss-en-all",
+      "country": "德国",
+      "region": "欧洲",
+      "language": "en",
+      "type": "rss",
+      "enabled": true
+    },
+
+    {
+      "name": "朝日新聞",
+      "url": "https://www.asahi.com/rss/index.rdf",
+      "country": "日本",
+      "region": "东亚",
+      "language": "ja",
+      "type": "rss",
+      "enabled": true
+    },
+    {
+      "name": "読売新聞",
+      "url": "https://www.yomiuri.co.jp/rss/index.xml",
+      "country": "日本",
+      "region": "东亚",
+      "language": "ja",
+      "type": "rss",
+      "enabled": true
+    },
+    {
+      "name": "NHK World",
+      "url": "https://www3.nhk.or.jp/nhkworld/en/news/rss.xml",
+      "country": "日本",
+      "region": "东亚",
+      "language": "en",
+      "type": "rss",
+      "enabled": true
+    },
+    {
+      "name": "Japan Times",
+      "url": "https://www.japantimes.co.jp/feed/",
+      "country": "日本",
+      "region": "东亚",
+      "language": "en",
+      "type": "rss",
+      "enabled": true
+    },
+
+    {
+      "name": "KBS",
+      "url": "https://world.kbs.co.kr/service/news_english.xml",
+      "country": "韩国",
+      "region": "东亚",
+      "language": "en",
+      "type": "rss",
+      "enabled": true
+    },
+    {
+      "name": "Yonhap",
+      "url": "https://en.yna.co.kr/RSS/news.xml",
+      "country": "韩国",
+      "region": "东亚",
+      "language": "en",
+      "type": "rss",
+      "enabled": true
+    },
+    {
+      "name": "Korea Herald",
+      "url": "https://www.koreaherald.com/rss_xml.php",
+      "country": "韩国",
+      "region": "东亚",
+      "language": "en",
+      "type": "rss",
+      "enabled": true
+    },
+    {
+      "name": "Korea Times",
+      "url": "https://www.koreatimes.co.kr/www/rss/rss.xml",
+      "country": "韩国",
+      "region": "东亚",
+      "language": "en",
+      "type": "rss",
+      "enabled": true
+    },
+
+    {
+      "name": "Times of India",
+      "url": "https://timesofindia.indiatimes.com/rssfeedstopstories.cms",
+      "country": "印度",
+      "region": "南亚",
+      "language": "en",
+      "type": "rss",
+      "enabled": true
+    },
+    {
+      "name": "The Hindu",
+      "url": "https://www.thehindu.com/news/international/feeder/default.rss",
+      "country": "印度",
+      "region": "南亚",
+      "language": "en",
+      "type": "rss",
+      "enabled": true
+    },
+    {
+      "name": "Indian Express",
+      "url": "https://indianexpress.com/feed/",
+      "country": "印度",
+      "region": "南亚",
+      "language": "en",
+      "type": "rss",
+      "enabled": true
+    },
+
+    {
+      "name": "ABC News (AU)",
+      "url": "https://www.abc.net.au/news/feed/1948/rss.xml",
+      "country": "澳大利亚",
+      "region": "大洋洲",
+      "language": "en",
+      "type": "rss",
+      "enabled": true
+    },
+    {
+      "name": "Sydney Morning Herald",
+      "url": "https://www.smh.com.au/rss/feed.xml",
+      "country": "澳大利亚",
+      "region": "大洋洲",
+      "language": "en",
+      "type": "rss",
+      "enabled": true
+    },
+
+    {
+      "name": "TASS",
+      "url": "https://tass.com/rss/v2.xml",
+      "country": "俄罗斯",
+      "region": "东欧",
+      "language": "en",
+      "type": "rss",
+      "enabled": true
+    },
+    {
+      "name": "RT",
+      "url": "https://www.rt.com/rss/",
+      "country": "俄罗斯",
+      "region": "东欧",
+      "language": "en",
+      "type": "rss",
+      "enabled": true
+    },
+
+    {
+      "name": "CNA",
+      "url": "https://www.channelnewsasia.com/rss/latest",
+      "country": "新加坡",
+      "region": "东南亚",
+      "language": "en",
+      "type": "rss",
+      "enabled": true
+    },
+    {
+      "name": "Straits Times",
+      "url": "https://www.straitstimes.com/news/asia/rss.xml",
+      "country": "新加坡",
+      "region": "东南亚",
+      "language": "en",
+      "type": "rss",
+      "enabled": true
+    },
+    {
+      "name": "Bangkok Post",
+      "url": "https://www.bangkokpost.com/rss/",
+      "country": "泰国",
+      "region": "东南亚",
+      "language": "en",
+      "type": "rss",
+      "enabled": true
+    },
+
+    {
+      "name": "Al Jazeera",
+      "url": "https://www.aljazeera.com/xml/rss/all.xml",
+      "country": "卡塔尔",
+      "region": "中东",
+      "language": "en",
+      "type": "rss",
+      "enabled": true
+    },
+    {
+      "name": "Arab News",
+      "url": "https://www.arabnews.com/rss.xml",
+      "country": "沙特阿拉伯",
+      "region": "中东",
+      "language": "en",
+      "type": "rss",
+      "enabled": true
+    },
+
+    {
+      "name": "AllAfrica",
+      "url": "https://allafrica.com/tools/headlines/rss.html",
+      "country": "泛非洲",
+      "region": "非洲",
+      "language": "en",
+      "type": "rss",
+      "enabled": true
+    },
+
+    {
+      "name": "MercoPress",
+      "url": "https://en.mercopress.com/rss/",
+      "country": "南大西洋",
+      "region": "南美",
+      "language": "en",
+      "type": "rss",
+      "enabled": true
+    },
+    {
+      "name": "Buenos Aires Times",
+      "url": "https://www.batimes.com.ar/feed",
+      "country": "阿根廷",
+      "region": "南美",
+      "language": "en",
+      "type": "rss",
+      "enabled": true
+    }
+  ]
+}

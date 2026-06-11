@@ -1,0 +1,8 @@
+{
+  "_说明": "GitHub Actions 在美国运行，不需要代理。此文件仅保留以备本地测试。",
+  "enabled": false,
+  "manual_proxies": [],
+  "auto_fetch_free_proxies": false,
+  "timeout": 30,
+  "retry_count": 3
+}
