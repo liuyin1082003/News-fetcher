@@ -1,6 +1,8 @@
 name: 每日涉华新闻抓取
 
 on:
+  push:
+    branches: [master]
   schedule:
     # 每天 UTC 8:00 = 北京时间 16:00 运行（一天新闻基本出齐）
     - cron: '0 8 * * *'
