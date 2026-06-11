@@ -34,7 +34,11 @@ jobs:
         run: python fetch_news.py --days 1 --source all --workers 5 --output raw_news.json
 
       - name: 生成 HTML 报告
-        run: python build_report.py raw_news.json
+        run: |
+          python build_report.py raw_news.json
+          # 复制到根目录供 GitHub Pages 使用
+          cp news_output/index.html index.html
+          cp news_output/news_*.html .
 
       - name: 设置页面
         uses: actions/configure-pages@v4
