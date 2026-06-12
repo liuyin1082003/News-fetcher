@@ -618,7 +618,34 @@ def build_report(json_path, repo="liuyin1082003/News-fetcher"):
 
     print(f"✅ 日报: {daily_path}  ({len(articles)} 篇报道)", file=sys.stderr)
 
-    # 6. 保存 manifest + 生成日期导航首页
+    # 6. 重新生成所有历史日期的日报（确保日期导航功能一致）
+    regenerated = 0
+    import re as _re
+    for date_str in all_dates:
+        if date_str == today:
+            continue
+        old_path = f"news_output/news_{date_str}.html"
+        if not os.path.exists(old_path):
+            continue
+        old_articles = _extract_articles_from_html(old_path)
+        if not old_articles:
+            # 从 manifest 取元数据，至少生成空页面骨架
+            meta = all_dates.get(date_str, {"articles": 0, "countries": 0})
+            old_articles = []
+        daily_html = DAILY_TEMPLATE.format(
+            date=date_str,
+            repo=repo,
+            meta_json=json.dumps(all_dates.get(date_str, {"articles": len(old_articles), "countries": 0}), ensure_ascii=False),
+            articles_json=json.dumps(old_articles, ensure_ascii=False),
+            all_dates_json=json.dumps(all_dates_list, ensure_ascii=False),
+        )
+        with open(old_path, "w", encoding="utf-8") as f:
+            f.write(daily_html)
+        regenerated += 1
+    if regenerated:
+        print(f"  🔄 重新生成了 {regenerated} 个历史日期的日报，同步日期导航功能", file=sys.stderr)
+
+    # 7. 保存 manifest + 生成日期导航首页
     manifest = {"dates": all_dates}
     _save_manifest(manifest)
 
@@ -710,6 +737,39 @@ def _extract_meta_from_html(filepath):
                 "articles": len(articles),
                 "countries": len(countries),
             }
+        except (json.JSONDecodeError, TypeError):
+            pass
+
+    return None
+
+
+def _extract_articles_from_html(filepath):
+    """从历史 HTML 文件中提取完整的文章数据，用于重新生成。
+
+    从 var DATA = [...] 中提取完整 JSON 数组。
+    支持旧版模板（有 summary 字段）和新版模板。
+
+    Returns:
+        list | None: 文章列表，提取失败返回 None
+    """
+    import re
+
+    try:
+        with open(filepath, "r", encoding="utf-8") as f:
+            content = f.read()
+    except Exception:
+        return None
+
+    # 匹配 var DATA = [...];  使用非贪婪匹配到第一个 ]; 为止
+    data_match = re.search(r"var DATA = (\[.*?\]);\s*$", content, re.MULTILINE | re.DOTALL)
+    if not data_match:
+        # 更宽松的匹配
+        data_match = re.search(r"var DATA\s*=\s*(\[[^\]]*\])\s*;", content, re.DOTALL)
+    if data_match:
+        try:
+            articles = json.loads(data_match.group(1))
+            if isinstance(articles, list) and len(articles) > 0:
+                return articles
         except (json.JSONDecodeError, TypeError):
             pass
 
