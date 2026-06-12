@@ -33,12 +33,11 @@ jobs:
       - name: 抓取新闻（RSS + Google News）
         run: python fetch_news.py --days 1 --source all --workers 5 --output raw_news.json
 
-      - name: 生成 HTML 报告
+      - name: 生成 HTML 报告（日报 + 日期导航首页）
         run: |
-          python build_report.py raw_news.json
-          # 复制到根目录供 GitHub Pages 使用
+          python build_report.py raw_news.json liuyin1082003/News-fetcher
+          # 复制日期导航首页到仓库根目录
           cp news_output/index.html index.html
-          cp news_output/news_*.html .
 
       - name: 设置页面
         uses: actions/configure-pages@v4
