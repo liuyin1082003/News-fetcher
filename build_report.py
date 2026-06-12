@@ -51,7 +51,12 @@ body{{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Mic
 .header-actions{{display:flex;gap:10px;align-items:center;flex-wrap:wrap}}
 .btn{{padding:8px 16px;border:1px solid var(--border);border-radius:6px;cursor:pointer;font-size:14px;background:var(--card-bg);color:var(--text);transition:all .2s;white-space:nowrap;text-decoration:none}}
 .btn:hover{{border-color:var(--accent);color:var(--accent)}}
+.btn-nav{{padding:8px 12px;border:1px solid var(--border);border-radius:6px;cursor:pointer;font-size:14px;background:var(--card-bg);color:var(--text);transition:all .2s;white-space:nowrap;text-decoration:none;font-weight:700}}
+.btn-nav:hover{{border-color:var(--accent);color:var(--accent)}}
+.btn-nav.disabled{{opacity:.3;pointer-events:none;cursor:default}}
 .btn-back{{border-color:var(--accent);color:var(--accent);font-weight:500}}
+.date-picker{{padding:8px 12px;border:1px solid var(--border);border-radius:6px;font-size:14px;background:var(--card-bg);color:var(--text);cursor:pointer;min-width:170px;font-weight:600;transition:border-color .2s}}
+.date-picker:focus{{outline:none;border-color:var(--accent)}}
 .search-box{{padding:8px 14px;border:1px solid var(--border);border-radius:6px;font-size:14px;background:var(--card-bg);color:var(--text);width:180px;transition:border-color .2s}}
 .search-box:focus{{outline:none;border-color:var(--accent)}}
 .filter-select{{padding:8px 12px;border:1px solid var(--border);border-radius:6px;font-size:14px;background:var(--card-bg);color:var(--text);cursor:pointer}}
@@ -96,7 +101,10 @@ mark{{background:var(--highlight);color:inherit;padding:1px 3px;border-radius:2p
 <div class="header">
     <h1>📰 国际涉华新闻日报</h1>
     <div class="header-actions">
-        <a href="./" class="btn btn-back" title="返回日期列表">📅 切换日期</a>
+        <a href="#" class="btn btn-nav" id="btnPrev" title="前一天">◀</a>
+        <select class="date-picker" id="datePicker"></select>
+        <a href="#" class="btn btn-nav" id="btnNext" title="后一天">▶</a>
+        <a href="./" class="btn btn-back" title="返回日期列表">📋</a>
         <input type="text" class="search-box" id="searchBox" placeholder="🔍 搜索..." />
         <select class="filter-select" id="countryFilter">
             <option value="all">🌍 全部</option>
@@ -120,6 +128,7 @@ mark{{background:var(--highlight);color:inherit;padding:1px 3px;border-radius:2p
 var DATA = {articles_json};
 var DATE = '{date}';
 var REPO = '{repo}';
+var ALL_DATES = {all_dates_json};
 
 function escapeHtml(text) {{
     if(!text)return'';
@@ -195,6 +204,7 @@ function filter() {{
 document.addEventListener('DOMContentLoaded',function(){{
     try{{if(localStorage.getItem('nt')==='dark'){{document.documentElement.setAttribute('data-theme','dark');document.getElementById('themeToggle').textContent='☀️'}}}}catch(e){{}}
     render();
+    initDateNav();
     document.getElementById('themeToggle').addEventListener('click',function(){{
         var n=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';
         document.documentElement.setAttribute('data-theme',n);
@@ -209,6 +219,46 @@ document.addEventListener('DOMContentLoaded',function(){{
     }});
     console.log('📰 '+DATA.length+' 篇新闻');
 }});
+
+function initDateNav(){{
+    if(!ALL_DATES||!ALL_DATES.length)return;
+    // 找到当天在所有日期中的索引
+    var curIdx=-1;
+    for(var i=0;i<ALL_DATES.length;i++){{if(ALL_DATES[i].date===DATE){{curIdx=i;break;}}}}
+
+    // 填充日期下拉框
+    var sel=document.getElementById('datePicker');
+    ALL_DATES.forEach(function(d){{
+        var opt=document.createElement('option');
+        opt.value=d.date;
+        // 显示格式: "6月12日 · 16篇 · 8国"
+        var parts=d.date.split('-');
+        var label=parseInt(parts[1])+'月'+parseInt(parts[2])+'日 · '+d.articles+'篇 · '+d.countries+'国';
+        if(d.date===DATE)label='📍 '+label;
+        opt.textContent=label;
+        if(d.date===DATE)opt.selected=true;
+        sel.appendChild(opt);
+    }});
+    sel.addEventListener('change',function(){{
+        var v=this.value;
+        if(v!==DATE)window.location.href='news_'+v+'.html';
+    }});
+
+    // 前后天按钮
+    var btnPrev=document.getElementById('btnPrev');
+    var btnNext=document.getElementById('btnNext');
+    if(curIdx<=0)btnPrev.classList.add('disabled');
+    else btnPrev.addEventListener('click',function(e){{e.preventDefault();if(curIdx>0)window.location.href='news_'+ALL_DATES[curIdx-1].date+'.html';}});
+    if(curIdx>=ALL_DATES.length-1)btnNext.classList.add('disabled');
+    else btnNext.addEventListener('click',function(e){{e.preventDefault();if(curIdx<ALL_DATES.length-1)window.location.href='news_'+ALL_DATES[curIdx+1].date+'.html';}});
+
+    // 键盘左右箭头翻页
+    document.addEventListener('keydown',function(e){{
+        if(e.target.tagName==='INPUT'||e.target.tagName==='SELECT')return;
+        if(e.key==='ArrowLeft'&&curIdx>0)window.location.href='news_'+ALL_DATES[curIdx-1].date+'.html';
+        if(e.key==='ArrowRight'&&curIdx<ALL_DATES.length-1)window.location.href='news_'+ALL_DATES[curIdx+1].date+'.html';
+    }});
+}}
 </script>
 </body>
 </html>"""
@@ -266,6 +316,32 @@ body{{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Mic
 .footer a{{color:var(--accent)}}
 .empty-state{{text-align:center;padding:60px 20px;color:var(--text2)}}
 .empty-state .empty-icon{{font-size:3em;margin-bottom:16px}}
+.view-toggle{{display:flex;gap:4px;margin-bottom:24px;justify-content:center}}
+.view-toggle .btn{{border-radius:8px}}
+.view-toggle .btn.active{{background:var(--accent);color:#fff;border-color:var(--accent);font-weight:600}}
+.calendar-container{{display:none}}
+.calendar{{
+    background:var(--card-bg);border:1px solid var(--border);border-radius:14px;
+    padding:16px 20px 20px;box-shadow:var(--shadow);max-width:700px;margin:0 auto 20px
+}}
+.cal-header{{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}}
+.cal-month{{font-size:1.15em;font-weight:700;color:var(--text)}}
+.cal-nav{{padding:4px 10px;border:1px solid var(--border);border-radius:6px;cursor:pointer;font-size:14px;background:var(--card-bg);color:var(--text)}}
+.cal-nav:hover{{border-color:var(--accent);color:var(--accent)}}
+.cal-weekdays{{display:grid;grid-template-columns:repeat(7,1fr);text-align:center;font-size:12px;color:var(--text2);margin-bottom:6px;font-weight:600}}
+.cal-grid{{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}}
+.cal-cell{{
+    aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    border-radius:8px;cursor:pointer;font-size:14px;font-weight:500;color:var(--text);
+    transition:all .15s;position:relative;text-decoration:none;min-width:0
+}}
+.cal-cell:hover{{background:var(--accent-lt);color:var(--accent);transform:scale(1.05)}}
+.cal-cell.empty{{cursor:default;color:var(--border)}}
+.cal-cell.empty:hover{{background:transparent;transform:none;color:var(--border)}}
+.cal-cell.today{{background:var(--accent);color:#fff;font-weight:700;box-shadow:0 2px 8px rgba(26,115,232,.3)}}
+.cal-cell.today:hover{{background:var(--accent);color:#fff}}
+.cal-cell .day-num{{font-size:14px;line-height:1}}
+.cal-cell .day-count{{font-size:9px;line-height:1;opacity:.7;margin-top:1px}}
 @media(max-width:768px){{
     .header{{padding:14px 16px}}.header h1{{font-size:1.2em}}
     .container{{padding:14px 10px}}
@@ -304,8 +380,19 @@ body{{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Mic
         </div>
     </div>
 
+    <div class="view-toggle">
+        <button class="btn active" id="btnCardView">📋 列表视图</button>
+        <button class="btn" id="btnCalView">📅 日历视图</button>
+    </div>
+
     <div class="date-grid" id="dateGrid">
         <!-- JS 动态渲染 -->
+    </div>
+
+    <div class="calendar-container" id="calContainer">
+        <div class="calendar" id="calendar">
+            <!-- JS 动态渲染 -->
+        </div>
     </div>
 
     <div class="empty-state" id="emptyState" style="display:none">
@@ -371,6 +458,31 @@ document.addEventListener('DOMContentLoaded', function() {{
     }} catch(e) {{}}
 
     render();
+    renderCalendar();
+
+    // 视图切换
+    var btnCard=document.getElementById('btnCardView');
+    var btnCal=document.getElementById('btnCalView');
+    var dateGrid=document.getElementById('dateGrid');
+    var calContainer=document.getElementById('calContainer');
+
+    function switchView(mode){{
+        if(mode==='card'){{
+            dateGrid.style.display='';calContainer.style.display='none';
+            btnCard.classList.add('active');btnCal.classList.remove('active');
+        }}else{{
+            dateGrid.style.display='none';calContainer.style.display='';
+            btnCard.classList.remove('active');btnCal.classList.add('active');
+            renderCalendar();
+        }}
+        try{{localStorage.setItem('nv',mode)}}catch(e){{}}
+    }}
+
+    btnCard.addEventListener('click',function(){{switchView('card')}});
+    btnCal.addEventListener('click',function(){{switchView('cal')}});
+
+    // 恢复上次视图选择
+    try{{if(localStorage.getItem('nv')==='cal')switchView('cal')}}catch(e){{}}
 
     document.getElementById('themeToggle').addEventListener('click', function() {{
         var next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
@@ -387,6 +499,64 @@ document.addEventListener('DOMContentLoaded', function() {{
         }}
     }});
 }});
+
+var calYear,calMonth;
+function renderCalendar(){{
+    if(!DATES.length)return;
+    // 默认显示当前月份
+    var now=new Date(TODAY+'T00:00:00');
+    if(typeof calYear==='undefined'){{calYear=now.getFullYear();calMonth=now.getMonth()+1;}}
+
+    var dateMap={{}};
+    DATES.forEach(function(d){{dateMap[d.date]=d;}});
+
+    var firstDay=new Date(calYear,calMonth-1,1);
+    var lastDay=new Date(calYear,calMonth,0);
+    var startDow=firstDay.getDay();
+    var totalDays=lastDay.getDate();
+
+    var WEEKDAYS=['日','一','二','三','四','五','六'];
+    var MONTHS=['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];
+
+    var h='';
+    h+='<div class="cal-header">';
+    h+='<button class="cal-nav" onclick="calShift(-1)">◀</button>';
+    h+='<span class="cal-month">'+calYear+'年 '+MONTHS[calMonth-1]+'</span>';
+    h+='<button class="cal-nav" onclick="calShift(1)">▶</button>';
+    h+='</div>';
+    h+='<div class="cal-weekdays">';
+    WEEKDAYS.forEach(function(w){{h+='<span>'+w+'</span>';}});
+    h+='</div><div class="cal-grid">';
+
+    // 填充空白
+    for(var i=0;i<startDow;i++)h+='<span class="cal-cell empty"></span>';
+
+    for(var d=1;d<=totalDays;d++){{
+        var ds=calYear+'-'+String(calMonth).padStart(2,'0')+'-'+String(d).padStart(2,'0');
+        var meta=dateMap[ds];
+        var isToday=ds===TODAY;
+        var cls=isToday?'cal-cell today':'cal-cell';
+        if(meta){{
+            h+='<a href="news_'+ds+'.html" class="'+cls+'" title="'+meta.articles+'篇报道, '+meta.countries+'国">';
+            h+='<span class="day-num">'+d+'</span>';
+            h+='<span class="day-count">'+meta.articles+'篇</span>';
+            h+='</a>';
+        }}else{{
+            h+='<span class="cal-cell empty">';
+            h+='<span class="day-num">'+d+'</span>';
+            h+='</span>';
+        }}
+    }}
+    h+='</div>';
+    document.getElementById('calendar').innerHTML=h;
+}}
+
+function calShift(delta){{
+    calMonth+=delta;
+    if(calMonth>12){{calMonth=1;calYear++;}}
+    if(calMonth<1){{calMonth=12;calYear--;}}
+    renderCalendar();
+}}
 </script>
 </body>
 </html>"""
@@ -423,12 +593,23 @@ def build_report(json_path, repo="liuyin1082003/News-fetcher"):
     # 3. 确保输出目录存在
     os.makedirs("news_output", exist_ok=True)
 
-    # 4. 生成当日新闻详情页
+    # 4. 扫描所有已有 HTML 文件，构建完整日期列表
+    all_dates = _scan_all_dates(today, today_meta)
+
+    # 构建日期卡片列表（按日期降序），供模板使用
+    dates_sorted = sorted(all_dates.items(), key=lambda x: x[0], reverse=True)
+    all_dates_list = [
+        {"date": d, "articles": m["articles"], "countries": m["countries"]}
+        for d, m in dates_sorted
+    ]
+
+    # 5. 生成当日新闻详情页（带日期导航）
     daily_html = DAILY_TEMPLATE.format(
         date=today,
         repo=repo,
         meta_json=json.dumps(today_meta, ensure_ascii=False),
         articles_json=json.dumps(articles, ensure_ascii=False),
+        all_dates_json=json.dumps(all_dates_list, ensure_ascii=False),
     )
 
     daily_path = f"news_output/news_{today}.html"
@@ -437,10 +618,7 @@ def build_report(json_path, repo="liuyin1082003/News-fetcher"):
 
     print(f"✅ 日报: {daily_path}  ({len(articles)} 篇报道)", file=sys.stderr)
 
-    # 5. 扫描所有已有 HTML 文件，提取元数据
-    all_dates = _scan_all_dates(today, today_meta)
-
-    # 保存 manifest 作为缓存
+    # 6. 保存 manifest + 生成日期导航首页
     manifest = {"dates": all_dates}
     _save_manifest(manifest)
 
