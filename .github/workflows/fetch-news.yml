@@ -12,8 +12,6 @@ on:
 # 权限：需要写入仓库来保存结果
 permissions:
   contents: write
-  pages: write
-  id-token: write
 
 jobs:
   fetch-and-report:
@@ -36,32 +34,14 @@ jobs:
       - name: 生成 HTML 报告（日报 + 日期导航首页）
         run: |
           python build_report.py raw_news.json liuyin1082003/News-fetcher
-          # 复制日期导航首页到仓库根目录
+          # 复制到仓库根目录供 GitHub Pages 使用（Pages 从 master 分支根目录提供）
           cp news_output/index.html index.html
-
-      - name: 设置页面
-        uses: actions/configure-pages@v4
-
-      - name: 上传到 GitHub Pages
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: news_output/
+          cp news_output/news_*.html . 2>/dev/null || true
 
       - name: 提交结果到仓库
         run: |
           git config user.name "News Bot"
           git config user.email "news-bot@github.com"
-          git add news_output/ index.html
+          git add news_output/ index.html news_*.html
           git diff --staged --quiet || git commit -m "📰 $(date +%Y-%m-%d) 新闻更新"
           git push
-
-  deploy:
-    needs: fetch-and-report
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: 部署到 GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
