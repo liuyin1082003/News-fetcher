@@ -51,7 +51,7 @@ jobs:
         run: |
           git config user.name "News Bot"
           git config user.email "news-bot@github.com"
-          git add news_output/
+          git add news_output/ index.html
           git diff --staged --quiet || git commit -m "📰 $(date +%Y-%m-%d) 新闻更新"
           git push
 
