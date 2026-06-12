@@ -319,7 +319,7 @@ body{{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Mic
 .view-toggle{{display:flex;gap:4px;margin-bottom:24px;justify-content:center}}
 .view-toggle .btn{{border-radius:8px}}
 .view-toggle .btn.active{{background:var(--accent);color:#fff;border-color:var(--accent);font-weight:600}}
-.calendar-container{{display:none}}
+.calendar-container{{}}
 .calendar{{
     background:var(--card-bg);border:1px solid var(--border);border-radius:14px;
     padding:16px 20px 20px;box-shadow:var(--shadow);max-width:700px;margin:0 auto 20px
@@ -389,7 +389,7 @@ body{{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Mic
         <!-- JS 动态渲染 -->
     </div>
 
-    <div class="calendar-container" id="calContainer">
+    <div class="calendar-container" id="calContainer" style="display:none">
         <div class="calendar" id="calendar">
             <!-- JS 动态渲染 -->
         </div>
