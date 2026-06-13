@@ -700,6 +700,10 @@ def _scan_all_dates(today, today_meta):
             all_dates[date_str] = {"articles": 0, "countries": 0}
             print(f"  ⚠️ {date_str}: 无法提取元数据，使用占位值", file=sys.stderr)
 
+    # 确保当日始终在列表中（即使文件尚未生成，因为上面的循环只扫描已存在的文件）
+    if today not in all_dates:
+        all_dates[today] = today_meta
+
     return all_dates
 
 
