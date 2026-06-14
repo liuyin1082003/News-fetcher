@@ -4,12 +4,11 @@ on:
   push:
     branches: [master]
   schedule:
-    # 每天 UTC 8:00 = 北京时间 16:00 运行（一天新闻基本出齐）
-    - cron: '0 8 * * *'
-  # 也支持手动触发
+    # 北京时间 12:00-22:00，每2小时跑一次（UTC 4:00-14:00）
+    # GitHub cron 延迟不可控，高频 + 幂等检查 = 确保命中
+    - cron: '0 4,6,8,10,12,14 * * *'
   workflow_dispatch:
 
-# 权限：需要写入仓库来保存结果
 permissions:
   contents: write
 
@@ -20,28 +19,45 @@ jobs:
       - name: 检出代码
         uses: actions/checkout@v4
 
+      - name: 检查今天是否已抓取
+        id: check
+        run: |
+          TODAY=$(TZ='Asia/Shanghai' date +%Y-%m-%d)
+          echo "today=$TODAY" >> $GITHUB_OUTPUT
+          if [ -f "news_output/news_${TODAY}.html" ]; then
+            echo "exists=true" >> $GITHUB_OUTPUT
+            echo "✅ 今天($TODAY)已有数据，跳过抓取"
+          else
+            echo "exists=false" >> $GITHUB_OUTPUT
+            echo "📰 今天($TODAY)尚无数据，开始抓取"
+          fi
+
       - name: 安装 Python
+        if: steps.check.outputs.exists == 'false'
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
 
       - name: 安装依赖
+        if: steps.check.outputs.exists == 'false'
         run: pip install feedparser
 
       - name: 抓取新闻（RSS + Google News）
+        if: steps.check.outputs.exists == 'false'
         run: python fetch_news.py --days 1 --source all --workers 5 --output raw_news.json
 
       - name: 生成 HTML 报告（日报 + 日期导航首页）
+        if: steps.check.outputs.exists == 'false'
         run: |
           python build_report.py raw_news.json liuyin1082003/News-fetcher
-          # 复制到仓库根目录供 GitHub Pages 使用（Pages 从 master 分支根目录提供）
           cp news_output/index.html index.html
           cp news_output/news_*.html . 2>/dev/null || true
 
       - name: 提交结果到仓库
+        if: steps.check.outputs.exists == 'false'
         run: |
           git config user.name "News Bot"
           git config user.email "news-bot@github.com"
           git add news_output/ index.html news_*.html
-          git diff --staged --quiet || git commit -m "📰 $(date +%Y-%m-%d) 新闻更新"
+          git diff --staged --quiet || git commit -m "📰 $(TZ='Asia/Shanghai' date +%Y-%m-%d) 新闻更新"
           git push
