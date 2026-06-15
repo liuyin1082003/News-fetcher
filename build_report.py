@@ -408,8 +408,19 @@ body{{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Mic
 </div>
 
 <script>
+// 客户端计算北京时间今天（不受服务器时区影响）
+var TODAY = (function() {{
+    var now = new Date();
+    // 转为北京时间 (UTC+8)
+    var bj = new Date(now.getTime() + (now.getTimezoneOffset() + 480) * 60000);
+    return bj.getFullYear() + '-' +
+           String(bj.getMonth() + 1).padStart(2, '0') + '-' +
+           String(bj.getDate()).padStart(2, '0');
+}})();
+
 var DATES = {manifest_json};
-var TODAY = '{today_str}';
+// ⚠️ 服务器端生成的 TODAY 仅作参考，实际"今天"由客户端计算
+var SERVER_TODAY = '{today_str}';
 
 var WEEKDAYS = ['周日','周一','周二','周三','周四','周五','周六'];
 
@@ -423,27 +434,53 @@ function getWeekday(dateStr) {{
     return WEEKDAYS[d.getDay()];
 }}
 
+// 判断某个日期是否已在 DATES 中
+function hasDate(ds) {{
+    for (var i = 0; i < DATES.length; i++) {{
+        if (DATES[i].date === ds) return i;
+    }}
+    return -1;
+}}
+
 function render() {{
     if (!DATES.length) {{
         document.getElementById('emptyState').style.display = 'block';
         return;
     }}
 
+    // ⚠️ 确保今天总是在列表最前面（即使工作流还没跑完）
+    var renderDates = DATES.slice();  // 浅拷贝
+    var todayIdx = hasDate(TODAY);
+    if (todayIdx === -1) {{
+        // 今天还没被抓取，插入占位卡片
+        renderDates.unshift({{date: TODAY, articles: 0, countries: 0, pending: true}});
+    }}
+
     var h = '';
-    DATES.forEach(function(item) {{
+    renderDates.forEach(function(item) {{
         var isToday = item.date === TODAY;
         var cls = isToday ? 'date-card today' : 'date-card';
         var badge = isToday ? '<div class="today-badge">今天</div>' : '';
 
-        h += '<a href="news_'+item.date+'.html" class="'+cls+'">';
-        h += badge;
-        h += '<div class="date-num">'+parseInt(item.date.split('-')[2])+'</div>';
-        h += '<div class="date-week">'+formatDate(item.date)+' '+getWeekday(item.date)+'</div>';
-        h += '<div class="date-meta">';
-        h += '<span>📰 '+item.articles+' 篇</span>';
-        h += '<span>🌍 '+item.countries+' 国</span>';
-        h += '</div>';
-        h += '</a>';
+        if (item.pending) {{
+            // 今天的数据尚未抓取，点击刷新本页
+            h += '<div class="'+cls+'" style="cursor:pointer" onclick="location.reload()">';
+            h += badge;
+            h += '<div class="date-num">'+parseInt(item.date.split('-')[2])+'</div>';
+            h += '<div class="date-week">'+formatDate(item.date)+' '+getWeekday(item.date)+'</div>';
+            h += '<div class="date-meta"><span>📡 抓取中...</span></div>';
+            h += '</div>';
+        }} else {{
+            h += '<a href="news_'+item.date+'.html" class="'+cls+'">';
+            h += badge;
+            h += '<div class="date-num">'+parseInt(item.date.split('-')[2])+'</div>';
+            h += '<div class="date-week">'+formatDate(item.date)+' '+getWeekday(item.date)+'</div>';
+            h += '<div class="date-meta">';
+            h += '<span>📰 '+item.articles+' 篇</span>';
+            h += '<span>🌍 '+item.countries+' 国</span>';
+            h += '</div>';
+            h += '</a>';
+        }}
     }});
     document.getElementById('dateGrid').innerHTML = h;
 }}
@@ -542,7 +579,7 @@ function renderCalendar(){{
             h+='<span class="day-count">'+meta.articles+'篇</span>';
             h+='</a>';
         }}else{{
-            h+='<span class="cal-cell empty">';
+            h+='<span class="'+cls+' empty">';
             h+='<span class="day-num">'+d+'</span>';
             h+='</span>';
         }}
@@ -565,19 +602,33 @@ function calShift(delta){{
 # ─── 核心函数 ────────────────────────────────────────────────
 
 
-def build_report(json_path, repo="liuyin1082003/News-fetcher"):
+def build_report(json_path, repo="liuyin1082003/News-fetcher", date_str=None):
     """主函数：生成当日报告 + 更新日期清单 + 生成日期导航首页
 
     Args:
         json_path: fetch_news.py 输出的 JSON 文件路径
         repo: GitHub 仓库名（用于页面底部链接）
+        date_str: 日期字符串 YYYY-MM-DD，默认北京时间今天
     """
     # 1. 读取 JSON 数据
     with open(json_path, "r", encoding="utf-8") as f:
         data = json.load(f)
 
     articles = data.get("articles", [])
-    today = datetime.now().strftime("%Y-%m-%d")
+    # ⚠️ 不能用 datetime.now()（GitHub Actions 是 UTC，比北京时间晚8小时）
+    # 必须由调用方传入北京时间日期，或从 TZ 环境变量推断
+    if date_str:
+        today = date_str
+    else:
+        # 本地运行时，尝试用北京时间
+        tz = os.environ.get("TZ", "")
+        if tz and "shanghai" in tz.lower() or tz and "asia" in tz.lower():
+            today = datetime.now().strftime("%Y-%m-%d")
+        else:
+            # 本地回退：用北京时间（UTC+8）
+            from datetime import timedelta, timezone
+            cst = timezone(timedelta(hours=8))
+            today = datetime.now(cst).strftime("%Y-%m-%d")
 
     # 2. 提取元数据
     countries = set()
@@ -650,7 +701,7 @@ def build_report(json_path, repo="liuyin1082003/News-fetcher"):
     _save_manifest(manifest)
 
     # 6. 生成日期导航首页
-    index_html = _build_index_html(manifest, repo)
+    index_html = _build_index_html(manifest, repo, today)
     index_path = "news_output/index.html"
     with open(index_path, "w", encoding="utf-8") as f:
         f.write(index_html)
@@ -799,12 +850,13 @@ def _save_manifest(manifest):
         json.dump(manifest, f, ensure_ascii=False, indent=2)
 
 
-def _build_index_html(manifest, repo):
+def _build_index_html(manifest, repo, today_str):
     """根据 manifest 生成日期导航首页 HTML
 
     Args:
         manifest: {"dates": {"2026-06-11": {"articles": 38, "countries": 10}, ...}}
         repo: GitHub 仓库名
+        today_str: 今天的日期字符串 YYYY-MM-DD
     """
     dates = manifest.get("dates", {})
 
@@ -814,7 +866,6 @@ def _build_index_html(manifest, repo):
     # 汇总统计
     total_articles = sum(m["articles"] for _, m in dates_sorted)
     total_days = len(dates_sorted)
-    today_str = datetime.now().strftime("%Y-%m-%d")
 
     # 构建日期卡片数据
     date_cards = []
@@ -838,16 +889,29 @@ def _build_index_html(manifest, repo):
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        print("用法: python build_report.py raw_news.json [github-repo]", file=sys.stderr)
-        print("示例: python build_report.py raw_news.json liuyin1082003/News-fetcher", file=sys.stderr)
+        print("用法: python build_report.py raw_news.json [github-repo] [--date YYYY-MM-DD]", file=sys.stderr)
+        print("示例: python build_report.py raw_news.json liuyin1082003/News-fetcher --date 2026-06-15", file=sys.stderr)
         sys.exit(1)
 
     json_path = sys.argv[1]
-    repo = sys.argv[2] if len(sys.argv) > 2 else "liuyin1082003/News-fetcher"
+    repo = "liuyin1082003/News-fetcher"
+    date_str = None
+
+    # 解析可选参数
+    i = 2
+    while i < len(sys.argv):
+        if sys.argv[i] == "--date" and i + 1 < len(sys.argv):
+            date_str = sys.argv[i + 1]
+            i += 2
+        elif not sys.argv[i].startswith("--"):
+            repo = sys.argv[i]
+            i += 1
+        else:
+            i += 1
 
     if not os.path.exists(json_path):
         print(f"❌ 文件不存在: {json_path}", file=sys.stderr)
         sys.exit(1)
 
-    build_report(json_path, repo)
+    build_report(json_path, repo, date_str)
     print("\n🎉 全部完成！", file=sys.stderr)

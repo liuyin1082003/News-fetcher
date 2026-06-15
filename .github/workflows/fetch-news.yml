@@ -4,9 +4,9 @@ on:
   push:
     branches: [master]
   schedule:
-    # 北京时间 12:00-22:00，每2小时跑一次（UTC 4:00-14:00）
-    # GitHub cron 延迟不可控，高频 + 幂等检查 = 确保命中
-    - cron: '0 4,6,8,10,12,14 * * *'
+    # 北京时间 8:00-23:30，每30分钟跑一次（UTC 0:00-15:30）
+    # GitHub cron 延迟不可控，32次/天的高频 + 幂等检查 = 确保命中
+    - cron: '*/30 0-15 * * *'
   workflow_dispatch:
 
 permissions:
@@ -49,7 +49,7 @@ jobs:
       - name: 生成 HTML 报告（日报 + 日期导航首页）
         if: steps.check.outputs.exists == 'false'
         run: |
-          python build_report.py raw_news.json liuyin1082003/News-fetcher
+          python build_report.py raw_news.json liuyin1082003/News-fetcher --date ${{ steps.check.outputs.today }}
           cp news_output/index.html index.html
           cp news_output/news_*.html . 2>/dev/null || true
 
