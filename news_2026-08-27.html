@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>国际涉华新闻日报 - 2026-08-27</title>
+<style>
+:root{
+    --bg:#f5f5f5;--card-bg:#fff;--text:#333;--text2:#666;--border:#e0e0e0;
+    --accent:#1a73e8;--accent-lt:#e8f0fe;--tag-bg:#e8f0fe;--tag-text:#1a73e8;
+    --highlight:#ffeb3b;--shadow:0 2px 8px rgba(0,0,0,.08);--hdr-bg:#1a1a2e;--hdr-text:#fff
+}
+[data-theme="dark"]{
+    --bg:#1a1a2e;--card-bg:#16213e;--text:#e0e0e0;--text2:#a0a0a0;--border:#2a2a4a;
+    --accent:#64b5f6;--accent-lt:#1e3a5f;--tag-bg:#1e3a5f;--tag-text:#64b5f6;
+    --highlight:#5c5200;--shadow:0 2px 8px rgba(0,0,0,.3);--hdr-bg:#0d0d1a
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);line-height:1.7;transition:background .3s,color .3s;min-height:100vh}
+.header{background:var(--hdr-bg);color:var(--hdr-text);padding:16px 32px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,.2)}
+.header h1{font-size:1.4em;font-weight:700}
+.header-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.btn{padding:8px 16px;border:1px solid var(--border);border-radius:6px;cursor:pointer;font-size:14px;background:var(--card-bg);color:var(--text);transition:all .2s;white-space:nowrap;text-decoration:none}
+.btn:hover{border-color:var(--accent);color:var(--accent)}
+.btn-nav{padding:8px 12px;border:1px solid var(--border);border-radius:6px;cursor:pointer;font-size:14px;background:var(--card-bg);color:var(--text);transition:all .2s;white-space:nowrap;text-decoration:none;font-weight:700}
+.btn-nav:hover{border-color:var(--accent);color:var(--accent)}
+.btn-nav.disabled{opacity:.3;pointer-events:none;cursor:default}
+.btn-back{border-color:var(--accent);color:var(--accent);font-weight:500}
+.date-picker{padding:8px 12px;border:1px solid var(--border);border-radius:6px;font-size:14px;background:var(--card-bg);color:var(--text);cursor:pointer;min-width:170px;font-weight:600;transition:border-color .2s}
+.date-picker:focus{outline:none;border-color:var(--accent)}
+.search-box{padding:8px 14px;border:1px solid var(--border);border-radius:6px;font-size:14px;background:var(--card-bg);color:var(--text);width:180px;transition:border-color .2s}
+.search-box:focus{outline:none;border-color:var(--accent)}
+.filter-select{padding:8px 12px;border:1px solid var(--border);border-radius:6px;font-size:14px;background:var(--card-bg);color:var(--text);cursor:pointer}
+.container{max-width:1000px;margin:0 auto;padding:24px 20px}
+.summary-bar{background:var(--card-bg);border:1px solid var(--border);border-radius:10px;padding:14px 24px;margin-bottom:20px;display:flex;gap:24px;flex-wrap:wrap;font-size:14px;color:var(--text2);box-shadow:var(--shadow)}
+.summary-bar strong{color:var(--accent);font-size:1.1em}
+.no-results{text-align:center;padding:40px;color:var(--text2);font-size:16px;display:none}
+.country-group{margin-bottom:28px}
+.country-header{font-size:1.2em;font-weight:700;margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid var(--accent);color:var(--accent);display:flex;align-items:center;gap:8px}
+.country-header .count{font-size:.8em;font-weight:400;color:var(--text2);margin-left:auto}
+.card{background:var(--card-bg);border:1px solid var(--border);border-radius:10px;padding:18px 22px;margin-bottom:14px;box-shadow:var(--shadow);transition:transform .2s,box-shadow .2s}
+.card:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,.12)}
+.card-title{font-size:1.05em;font-weight:600;margin-bottom:8px}
+.card-title a{color:var(--text);text-decoration:none}
+.card-title a:hover{color:var(--accent)}
+.card-meta{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-bottom:8px}
+.tag{display:inline-block;padding:2px 10px;border-radius:12px;font-size:12px;font-weight:500;white-space:nowrap}
+.tag-source{background:var(--accent-lt);color:var(--tag-text)}
+.tag-via{background:#fff3e0;color:#e65100}
+[data-theme="dark"] .tag-via{background:#3d2600;color:#ffb74d}
+.card-summary{font-size:14px;color:var(--text2);line-height:1.6;margin-bottom:4px}
+.card-link{font-size:13px}
+.card-link a{color:var(--accent);text-decoration:none}
+.card-link a:hover{text-decoration:underline}
+mark{background:var(--highlight);color:inherit;padding:1px 3px;border-radius:2px}
+.footer{text-align:center;padding:30px;color:var(--text2);font-size:13px;border-top:1px solid var(--border);margin-top:30px}
+.footer a{color:var(--accent)}
+@media print{
+    .header{position:static;background:#fff!important;color:#000!important;box-shadow:none}
+    .card{break-inside:avoid;box-shadow:none}
+    .btn,.search-box,.filter-select,.footer{display:none!important}
+}
+@media(max-width:768px){
+    .header{padding:12px 16px}.header h1{font-size:1.1em}
+    .container{padding:14px 10px}.card{padding:14px 16px}
+}
+</style>
+</head>
+<body>
+
+<!-- NEWS_META: {"articles": 54, "countries": 10} -->
+<div class="header">
+    <h1>📰 国际涉华新闻日报</h1>
+    <div class="header-actions">
+        <a href="#" class="btn btn-nav" id="btnPrev" title="前一天">◀</a>
+        <select class="date-picker" id="datePicker"></select>
+        <a href="#" class="btn btn-nav" id="btnNext" title="后一天">▶</a>
+        <a href="./" class="btn btn-back" title="返回日期列表">📋</a>
+        <input type="text" class="search-box" id="searchBox" placeholder="🔍 搜索..." />
+        <select class="filter-select" id="countryFilter">
+            <option value="all">🌍 全部</option>
+        </select>
+        <button class="btn" id="themeToggle">🌙</button>
+    </div>
+</div>
+
+<div class="container">
+    <div class="summary-bar" id="summaryBar"></div>
+    <div class="no-results" id="noResults">😕 没有匹配的结果，试试换一个搜索词。</div>
+    <div id="articlesContainer"></div>
+</div>
+
+<div class="footer">
+    <p>🤖 由 GitHub Actions 自动生成 · 每日更新 · <a href="https://github.com/liuyin1082003/News-fetcher">查看源码</a></p>
+    <p style="margin-top:6px"><a href="./">📅 查看其他日期的报道</a></p>
+</div>
+
+<script>
+var DATA = [{"title": "India, China to push for ‘early and substantial harvest’ of border delimitation", "link": "https://www.thehindu.com/news/national/india-china-to-push-for-early-and-substantial-harvest-of-border-delimitation/article71393272.ece", "summary": "India and China agree to hold the next meeting of an expert-level mechanism on trans-border rivers in September, and to maintain communication on sharing hydrological data", "published": "2026-08-26T15:44:38", "source": "The Hindu", "country": "印度", "region": "南亚", "via": "RSS"}, {"title": "Dozens dead, hundreds missing in flash floods on Nepal-China border", "link": "https://www.washingtonpost.com/world/2026/08/26/least-22-dead-hundreds-missing-flash-floods-nepal-china-border/", "summary": "An avalanche caused the Bhotekoshi River to overflow, sending waves of water and mud that swept buildings and people away.", "published": "2026-08-26T15:40:06", "source": "Washington Post", "country": "美国", "region": "北美", "via": "RSS"}, {"title": "Russia, China close gap with US in space — media", "link": "https://tass.com/science/2177983", "summary": "This \"could have frightening consequences for the national security\" of the United States, the newspaper writes", "published": "2026-08-26T15:15:53", "source": "TASS", "country": "俄罗斯", "region": "东欧", "via": "RSS"}, {"title": "Hundreds missing in Nepal catastrophic flash floods", "link": "https://www.france24.com/en/video/20260826-hundreds-missing-in-nepal-catastrophic-flash-floods", "summary": "Massive flash floods in Nepal on Wednesday killed at least 22 people and left hundreds of tourists, workers and others missing after sweeping through communities and bringing travel in parts of the Himalayan country to a halt. China's government across the northern border also launched search and re", "published": "2026-08-26T15:01:42", "source": "France 24 (EN)", "country": "法国", "region": "欧洲", "via": "RSS"}, {"title": "'Major casualties': Devastating floods wash away villages on Nepal-Tibet border", "link": "https://www.france24.com/en/video/20260826-major-casualties-devastating-floods-wash-away-villages-on-nepal-tibet-border", "summary": "Massive flooding near the border with Tibet killed dozens in Nepal on Wednesday. Hundreds of people were still out of contact hours after the disaster hit. A torrent of mud and debris burst from the banks of a river between China and Nepal, burying buildings and triggering a frantic search for survi", "published": "2026-08-26T14:58:31", "source": "France 24 (EN)", "country": "法国", "region": "欧洲", "via": "RSS"}, {"title": "Nepal: Hundreds reported missing after deadly flash floods", "link": "https://www.france24.com/en/video/20260826-nepal-hundreds-reported-missing-after-deadly-flash-floods", "summary": "Entire roads and villages have been engulfed in mud after flash floods struck a border crossing between Tibet and Nepal. Hundreds are reported missing, including over 300 tourists. Flood alerts have also been issued in the Indian states of Bihar and Uttar Pradesh.", "published": "2026-08-26T14:30:30", "source": "France 24 (EN)", "country": "法国", "region": "欧洲", "via": "RSS"}, {"title": "Au Népal et au Tibet, une crue dévastatrice fait au moins 98 morts et des centaines de disparus", "link": "https://www.lemonde.fr/international/article/2026/08/26/au-nepal-une-crue-devastatrice-fait-au-moins-95-morts_6757359_3211.html", "summary": "Des images diffusées par la police népalaise ont montré les eaux de la crue déferlant dans une rivière et emportant des maisons sur leur passage.", "published": "2026-08-26T14:30:24", "source": "Le Monde", "country": "法国", "region": "欧洲", "via": "RSS"}, {"title": "What to Know About Social Media Addiction Lawsuits Against Meta, Snap, TikTok and YouTube", "link": "https://www.nytimes.com/2026/01/27/technology/social-media-addiction-trials-meta-snap-tiktok-youtube.html", "summary": "Landmark trials are testing a new legal strategy claiming that Meta, TikTok, Snap and YouTube caused personal injury through addictive products.", "published": "2026-08-26T14:23:44", "source": "New York Times", "country": "美国", "region": "北美", "via": "RSS"}, {"title": "Australian among hundreds missing after avalanche triggers deadly flash floods in Nepal", "link": "https://www.smh.com.au/world/asia/hundreds-missing-and-at-least-8-killed-after-avalanche-triggers-deadly-flash-floods-in-nepal-20260826-p60rwb.html?ref=rss&utm_medium=rss&utm_source=rss_feed", "summary": "Ninety-eight people have been confirmed dead in Nepal and China, with fears for hundreds of people missing, including tourists from Australia, India and the UK.", "published": "2026-08-26T14:11:58", "source": "Sydney Morning Herald", "country": "澳大利亚", "region": "大洋洲", "via": "RSS"}, {"title": "Flash floods on Nepal-Tibet border leave scores dead and hundreds missing", "link": "https://www.theguardian.com/world/2026/aug/26/major-casualties-feared-after-flash-floods-along-nepal-tibet-border", "summary": "More than 380 tourists among those unaccounted for after homes, roads, bridges and power plants swept awayNepal-Tibet floods – latest updatesAt least 95 people have died and hundreds are missing after flash floods ⁠hit the Himalayan border areas of ⁠Nepal and Tibet in China, with officials saying ar", "published": "2026-08-26T14:07:38", "source": "The Guardian", "country": "英国", "region": "欧洲", "via": "RSS"}, {"title": "Ban on trade with Iran could destabilize global economy — NYT", "link": "https://tass.com/economy/2177947", "summary": "According to experts, the policy of sanctions against Iran is unlikely to succeed without cooperation from China and India, Tehran’s key trading partners", "published": "2026-08-26T13:35:36", "source": "TASS", "country": "俄罗斯", "region": "东欧", "via": "RSS"}, {"title": "US voices 'significant concerns' over Chinese dissident artist Gao Zhen's prison sentence", "link": "https://www.straitstimes.com/asia/us-voices-significant-concerns-over-chinese-dissident-artist-gao-zhens-prison-sentence", "summary": "Aug 26 - The U.S. State Department said it has \\\"significant concerns\\\" over the case of Chinese artist Gao Zhen, who was sentenced to three years in prison by a Chinese court on Tuesday over dissident artworks, and said its diplomats were refused entry to the sentencing hearing.", "published": "2026-08-26T13:19:01", "source": "Straits Times", "country": "新加坡", "region": "东南亚", "via": "RSS"}, {"title": "CCTV captures terrifying mudslide engulfing Nepal-China border", "link": "https://www.aljazeera.com/video/newsfeed/2026/8/26/cctv-captures-terrifying-mudslide-engulfing-nepal-china-border?traffic_source=rss", "summary": "CCTV footage shows people fleeing seconds before a massive mudslide engulfs a crossing on the Nepal-China border.", "published": "2026-08-26T12:36:34", "source": "Al Jazeera", "country": "卡塔尔", "region": "中东", "via": "RSS"}, {"title": "What triggered the catastrophic flood on the Nepal-Tibet border?", "link": "https://www.straitstimes.com/asia/what-triggered-the-catastrophic-flood-on-the-nepal-tibet-border", "summary": "Aug 26 - At least nine people have been killed in massive floods that struck the Himalayan border region of Nepal and China's Tibet on Wednesday.", "published": "2026-08-26T12:29:09", "source": "Straits Times", "country": "新加坡", "region": "东南亚", "via": "RSS"}, {"title": "At least 75 killed and hundreds missing after flash floods in Nepal and China", "link": "https://www.npr.org/2026/08/26/g-s1-140211/nepal-china-floods", "summary": "The disaster is linked to climate change, with experts noting the region's vulnerability to extreme weather.", "published": "2026-08-26T12:27:19", "source": "NPR", "country": "美国", "region": "北美", "via": "RSS"}, {"title": "Deadly flash floods near Nepal-Tibet border raze villages, leave hundreds missing", "link": "https://www.france24.com/en/asia-pacific/20260826-at-least-22-bodies-recovered-hundreds-missing-after-nepal-tibet-flash-floods", "summary": "Massive flash floods that swept through the Himalayan border regions of Nepal and Tibet on Wednesday killed at least 95 people and destroyed villages and infrastructure, officials said. Hundreds are still missing, including foreign tourists and pilgrims from neighbouring India, as authorities race t", "published": "2026-08-26T12:26:17", "source": "France 24 (EN)", "country": "法国", "region": "欧洲", "via": "RSS"}, {"title": "China advises its citizens to leave Taiwan ally Eswatini over 'security risks'", "link": "https://www.bbc.co.uk/news/articles/c3rel9rgnx5o?at_medium=RSS&at_campaign=rss", "summary": "Eswatini is one of 12 countries, and the only one in Africa, that has diplomatic relations with Taiwan.", "published": "2026-08-26T12:17:12", "source": "BBC", "country": "英国", "region": "欧洲", "via": "RSS"}, {"title": "India, China can help resolve West Asia conflict: Hillary Clinton", "link": "https://www.thehindu.com/news/international/india-china-can-help-resolve-west-asia-conflict-hillary-clinton/article71392525.ece", "summary": "Ms. Clinton said China, in particular, can put pressure on Tehran, as it is one of the biggest buyers of oil and gas from Iran", "published": "2026-08-26T12:05:07", "source": "The Hindu", "country": "印度", "region": "南亚", "via": "RSS"}, {"title": "Malaysia to regulate e-commerce platforms following complaints", "link": "https://www.straitstimes.com/asia/se-asia/malaysia-to-regulate-e-commerce-platforms-following-complaints", "summary": "Shopee, TikTok Shop and Lazada are among the most popular e-commerce platforms in Malaysia.", "published": "2026-08-26T12:00:00", "source": "Straits Times", "country": "新加坡", "region": "东南亚", "via": "RSS"}, {"title": "Tibet’s Gyirong suffers ‘major casualties’ from mudslide, Xinhua reports", "link": "https://www.thehindu.com/news/international/tibet-gyirong-mudslide-death-toll-updates/article71392143.ece", "summary": "President ‌席 urged “all-out” efforts ​to search for the missing, and called ⁠for strengthening monitoring and early warning systems to prevent ‌secondary disasters", "published": "2026-08-26T11:13:54", "source": "The Hindu", "country": "印度", "region": "南亚", "via": "RSS"}, {"title": "China’s 席 to visit Kyrgyzstan, Egypt", "link": "https://www.aljazeera.com/news/2026/8/26/chinas-xi-to-visit-kyrgyzstan-egypt?traffic_source=rss", "summary": "The Chinese president will attend the SCO summit in Bishkek, before travelling to Egypt.", "published": "2026-08-26T10:29:46", "source": "Al Jazeera", "country": "卡塔尔", "region": "中东", "via": "RSS"}, {"title": "PM Balen Shah appeals for unity after monster floods batter Nepal; Bihar, UP on high alert", "link": "https://timesofindia.indiatimes.com/world/south-asia/over-100-indians-missing-after-flash-floods-hit-nepal-what-we-know-so-far/articleshow/133536823.cms", "summary": "A massive flash flood in Nepal's Rasuwa district has caused widespread damage and claimed seventeen lives. Over one hundred Indian nationals are reported missing after the sudden surge in the Bhote Koshi River. Many missing individuals are believed to be pilgrims traveling to Tibet for the Kailash M", "published": "2026-08-26T10:14:43", "source": "Times of India", "country": "印度", "region": "南亚", "via": "RSS"}, {"title": "Massive flash flood in Nepal sweeps away villages and dams (VIDEOS)", "link": "https://www.rt.com/india/644668-nepal-flash-flood/?utm_source=rss&utm_medium=rss&utm_campaign=RSS", "summary": " A flash flood originating in Tibet swept away villages, bridges, and roads, leaving at least 95 dead and hundreds of tourists missing Read Full Article at RT.com", "published": "2026-08-26T10:03:52", "source": "RT", "country": "俄罗斯", "region": "东欧", "via": "RSS"}, {"title": "Hong Kong to announce first five-year plan on Sept 16", "link": "https://www.straitstimes.com/asia/east-asia/hong-kong-to-announce-first-five-year-plan-on-sept-16", "summary": "Hong Kong’s Chief Executive John Lee said his administration was focusing on policy continuity.", "published": "2026-08-26T09:55:00", "source": "Straits Times", "country": "新加坡", "region": "东南亚", "via": "RSS"}, {"title": "Raids &amp; kidnapping drills: How Chinese students are prepping for Trump's US", "link": "https://timesofindia.indiatimes.com/world/rest-of-world/raids-kidnapping-drills-how-chinese-students-are-preparing-for-college-in-trumps-usa/articleshow/133400248.cms", "summary": "Chinese students now receive survival training before attending American universities.  This preparation addresses perceived immigration system unpredictability and potential hostility.  New immigration rules and heightened scrutiny create significant anxiety for families.  Students must now navigat", "published": "2026-08-26T09:46:52", "source": "Times of India", "country": "印度", "region": "南亚", "via": "RSS"}, {"title": "Japan port call by a nuclear-armed ship would help deter China: ex-official", "link": "https://www.japantimes.co.jp/news/2026/08/26/japan/nuclear-ship-call/", "summary": "Tokyo should revise the principle of not permitting the entry of nuclear weapons into Japan, ex-Assistant Chief Cabinet Secretary Nobukatsu Kanehara has said.", "published": "2026-08-26T09:46:00", "source": "Japan Times", "country": "日本", "region": "东亚", "via": "RSS"}, {"title": "Deadly flash flood wipes away villages in Nepal, Tibet", "link": "https://www.dw.com/en/deadly-flash-flood-wipes-away-villages-in-nepal-tibet/a-78505576?maca=en-rss-en-all-1573-rdf", "summary": "Dozens have died and hundreds were reported missing, including 291 international tourists. Rescue helicopters have been unable to land in affected areas due to high floodwaters.", "published": "2026-08-26T09:44:00", "source": "Deutsche Welle", "country": "德国", "region": "欧洲", "via": "RSS"}, {"title": "Taiwan President pushes $8.4 billion military drone Bill ahead of crucial vote", "link": "https://www.straitstimes.com/asia/east-asia/taiwan-president-pushes-6-6-billion-military-drone-bill-ahead-of-crucial-vote", "summary": "Taiwan’s government says the plans to buy some 210,000 new military drones cannot wait.", "published": "2026-08-26T09:34:06", "source": "Straits Times", "country": "新加坡", "region": "东南亚", "via": "RSS"}, {"title": "‘Tech-gemony’ will determine who shapes the next global order", "link": "https://www.japantimes.co.jp/commentary/2026/08/26/world/tech-gemony-global-order/", "summary": "Addressing the China challenge requires fundamental changes in policy by both government and business, as well as behavioral changes by ordinary citizens.", "published": "2026-08-26T09:30:00", "source": "Japan Times", "country": "日本", "region": "东亚", "via": "RSS"}, {"title": "Inside Evergrande’s unfinished fairytale ‘castle’ and the long shadow of China’s property boom gone bust", "link": "https://www.straitstimes.com/asia/east-asia/inside-evergrandes-unfinished-fairytale-castle-and-the-long-shadow-of-chinas-property-boom-gone-bust", "summary": "The project’s crumbling facades are a physical emblem of the property crisis that continues to weigh on the world’s second-largest economy.", "published": "2026-08-26T09:30:00", "source": "Straits Times", "country": "新加坡", "region": "东南亚", "via": "RSS"}, {"title": "Deadly disasters in the Himalayas over a dozen years", "link": "https://www.straitstimes.com/asia/deadly-disasters-in-the-himalayas-over-a-dozen-years", "summary": "Aug 26 - A massive flash flood killed at least nine people on Wednesday in the Himalayan border areas of Nepal and adjoining Tibet, washing away villages, damaging roads, bridges and power projects, with authorities fearing more casualties.", "published": "2026-08-26T09:29:19", "source": "Straits Times", "country": "新加坡", "region": "东南亚", "via": "RSS"}, {"title": "Deadly flash flood and mudslide cause casualties in Nepal and China", "link": "https://www.japantimes.co.jp/news/2026/08/26/asia-pacific/nepal-flash-flood/", "summary": "Roads, bridges and power projects have been damaged, and rescue helicopters are not expected to be able to land until waters recede.", "published": "2026-08-26T09:29:00", "source": "Japan Times", "country": "日本", "region": "东亚", "via": "RSS"}, {"title": "China goes rural with data centers in quest to power AI", "link": "https://www.japantimes.co.jp/news/2026/08/26/asia-pacific/china-rural-data-centers-power-ai/", "summary": "Beijing's strategy sees much of the digital infrastructure for artificial intelligence development across China's eastern seaboard established in the less-populated, rural west.", "published": "2026-08-26T08:58:00", "source": "Japan Times", "country": "日本", "region": "东亚", "via": "RSS"}, {"title": "North Korea to ‘bring joy’ to Kim with 100 athletes at Asian Games in Japan", "link": "https://www.japantimes.co.jp/sports/2026/08/26/north-korea-asian-games/", "summary": "The nuclear-armed state suspended participation in international sporting competitions during the COVID-19 pandemic but returned at the Asian Games in China in 2023", "published": "2026-08-26T08:53:00", "source": "Japan Times", "country": "日本", "region": "东亚", "via": "RSS"}, {"title": "Tibet’s Gyirong suffers ‘major casualties’ from mudslide: Report", "link": "https://www.straitstimes.com/asia/east-asia/tibets-gyirong-suffers-major-casualties-from-mudslide-xinhua-reports", "summary": "席 urged “all-out” efforts to search for the missing.", "published": "2026-08-26T08:33:52", "source": "Straits Times", "country": "新加坡", "region": "东南亚", "via": "RSS"}, {"title": "India and China to continue to seek political settlement of border issue", "link": "https://www.rt.com/india/644659-india-china-border-talks/?utm_source=rss&utm_medium=rss&utm_campaign=RSS", "summary": " India and China agreed to continue to look for a political settlement of the border issue, in talks in Beijing Read Full Article at RT.com", "published": "2026-08-26T08:31:52", "source": "RT", "country": "俄罗斯", "region": "东欧", "via": "RSS"}, {"title": "Bill Gates, alarmed by AI, has policy ideas he wants to discuss with China's 席", "link": "https://www.straitstimes.com/asia/bill-gates-alarmed-by-ai-has-policy-ideas-he-wants-to-discuss-with-chinas-xi", "summary": "SAN FRANCISCO, Aug 26 - Bill Gates is looking to meet with Chinese 席 later this year, eager to propose global efforts to mitigate the growing risks posed by artificial intelligence.", "published": "2026-08-26T08:29:09", "source": "Straits Times", "country": "新加坡", "region": "东南亚", "via": "RSS"}, {"title": "China’s 席 to visit Kyrgyzstan, Egypt from Sunday: Foreign Ministry", "link": "https://www.thehindu.com/news/international/chinas-xi-to-visit-kyrgyzstan-egypt-from-sunday-foreign-ministry/article71392060.ece", "summary": "The tour, which lasts until September 3, will be 席’s second overseas trip this year following a visit to North Korea in June.", "published": "2026-08-26T08:16:51", "source": "The Hindu", "country": "印度", "region": "南亚", "via": "RSS"}, {"title": "Trump's new economic squeeze on Iran has big challenge: China", "link": "https://www.thehindu.com/news/international/trumps-new-economic-squeeze-on-iran-has-big-challenge-china/article71391233.ece", "summary": "Trump’s economic pressure on Iran faces challenges from China’s strong trade ties, complicating U.S.-China relations ahead of a key summit", "published": "2026-08-26T08:07:29", "source": "The Hindu", "country": "印度", "region": "南亚", "via": "RSS"}, {"title": "China's 席 to attend SCO summit in Kyrgyzstan, visit Egypt, ministry says", "link": "https://www.straitstimes.com/asia/chinas-xi-to-attend-sco-summit-in-kyrgyzstan-visit-egypt-ministry-says", "summary": "BEIJING, Aug 26 - Chinese 席 will attend the Shanghai Cooperation Organization (SCO) summit in Bishkek, Kyrgyzstan, as part of a state visit there and then to Egypt from August 30 to September 3, China's foreign ministry said on Wednesday.", "published": "2026-08-26T08:03:56", "source": "Straits Times", "country": "新加坡", "region": "东南亚", "via": "RSS"}, {"title": "Devastating flash flood on Nepal-Tibet border kills 95, hundreds of tourists missing", "link": "https://www.straitstimes.com/asia/nepal-flash-flood-washes-away-villages-project-sites-near-tibet-border", "summary": "Houses and roads were swept away in Nepal while officials in Tibet said they fear major casualties.", "published": "2026-08-26T07:05:05", "source": "Straits Times", "country": "新加坡", "region": "东南亚", "via": "RSS"}, {"title": "Seven killed, nine Chinese workers missing in Russia gas complex fire", "link": "https://www.thehindu.com/news/international/seven-killed-nine-chinese-workers-missing-in-russia-gas-complex-fire/article71391661.ece", "summary": "A ⁠total of seven people died⁠, and 152 people were treated for injuries, including 36 who were rushed to hospitals, the plant said on ​the Telegram ‌messaging app on Wednesday", "published": "2026-08-26T06:33:01", "source": "The Hindu", "country": "印度", "region": "南亚", "via": "RSS"}, {"title": "China joins India search for 22 missing after cargo ship sinks", "link": "https://www.straitstimes.com/asia/china-joins-india-search-for-22-missing-after-cargo-ship-sinks", "summary": "The MV Ocean Winner was carrying 24 crew members, including 20 Chinese nationals.", "published": "2026-08-26T06:15:00", "source": "Straits Times", "country": "新加坡", "region": "东南亚", "via": "RSS"}, {"title": "Typhoon Saudel heads west after pounding Japan's southwestern remote islands, injuring 2", "link": "https://www.thehindu.com/news/international/typhoon-saudel-heads-west-after-pounding-japans-southwestern-remote-islands-injuring-2/article71391605.ece", "summary": "Typhoon Saudel was about 180 kilometres northwest of Okinoerabu island, packing winds of up to 144 kph as of late morning Wednesday as it headed toward China's eastern coast, the Japan Meteorological Agency said", "published": "2026-08-26T06:02:00", "source": "The Hindu", "country": "印度", "region": "南亚", "via": "RSS"}, {"title": "No formaldehyde detected in Chinese cabbage shipments to South Korea so far, say authorities", "link": "https://www.straitstimes.com/asia/east-asia/no-formaldehyde-detected-in-chinese-cabbage-shipments-to-south-korea-so-far-say-authorities", "summary": "There were allegations that some agricultural produce buyers in China had dipped cabbage in a formaldehyde solution.", "published": "2026-08-26T05:15:00", "source": "Straits Times", "country": "新加坡", "region": "东南亚", "via": "RSS"}, {"title": "China: Dissident artist jailed for satirical Mao sculptures", "link": "https://www.dw.com/en/china-dissident-artist-jailed-for-satirical-mao-sculptures/a-78502724?maca=en-rss-en-all-1573-rdf", "summary": "Sculptor Gao Zhen was charged under China's \"Law on the Protection ⁠of Heroes ​and Martyrs.\" His supporters have called for his immediate release.", "published": "2026-08-26T03:46:00", "source": "Deutsche Welle", "country": "德国", "region": "欧洲", "via": "RSS"}, {"title": "Japan, Indonesia and Australia defense chiefs hold first-ever trilateral talks", "link": "https://www.japantimes.co.jp/news/2026/08/26/japan/politics/japan-indonesia-australia-defense-ministers/", "summary": "The three agreed to promote defense cooperation, just weeks after Jakarta reached a deal with Beijing to boost military ties.", "published": "2026-08-26T03:28:00", "source": "Japan Times", "country": "日本", "region": "东亚", "via": "RSS"}, {"title": "Typhoon Narra: record flood waters submerge homes and force mass evacuations in China", "link": "https://www.theguardian.com/world/2026/aug/26/typhoon-narra-floods-evacuations-china", "summary": "Heavy rain expected in parts of Vietnam and southern ‌China, as another storm system, Typhoon Saudel, heads for Japan and TaiwanWidespread flooding triggered by Typhoon Narra has submerged homes and forced mass evacuations in southern China, as another storm system tracked towards Japan and Taiwan.A", "published": "2026-08-26T01:46:25", "source": "The Guardian", "country": "英国", "region": "欧洲", "via": "RSS"}, {"title": "Chinese teens are turning to mind-numbing drugs to 'run away from reality'", "link": "https://www.bbc.co.uk/news/articles/c99d08j3kz1o?at_medium=RSS&at_campaign=rss", "summary": "Students are seeking prescription drugs because they fear failure, a teen tells the BBC.", "published": "2026-08-25T22:37:50", "source": "BBC", "country": "英国", "region": "欧洲", "via": "RSS"}, {"title": "The U.S. and Canada are in a trade war. China aims to win it.", "link": "https://www.washingtonpost.com/world/2026/08/25/us-canada-are-trade-war-china-aims-win-it/", "summary": "Beijing, seeking an advantage, casts itself as a global champion of free trade.", "published": "2026-08-25T22:22:11", "source": "Washington Post", "country": "美国", "region": "北美", "via": "RSS"}, {"title": "Taiwan charges nine people for smuggling ‘high-end’ AI servers to China", "link": "https://www.theguardian.com/technology/2026/aug/25/taiwan-china-ai-smugglers", "summary": "Among those charged are two Super Micro employees and one from Nvidia, marking another flashpoint in US-China AI rivalryTaiwanese prosecutors charged nine people Monday, including one from Nvidia and two from Super Micro, for illegally exporting “high-end AI servers” to mainland China, adding anothe", "published": "2026-08-25T19:02:42", "source": "The Guardian", "country": "英国", "region": "欧洲", "via": "RSS"}, {"title": "The U.S. is escalating its economic war on Iran. Here’s what that means.", "link": "https://www.washingtonpost.com/world/2026/08/25/us-is-escalating-its-economic-war-iran-heres-what-that-means/", "summary": "Iran’s top trade partners include China, Iraq, Turkey and the United Arab Emirates. But the Trump administration has not said who new sanctions would target, or how so.", "published": "2026-08-25T18:39:35", "source": "Washington Post", "country": "美国", "region": "北美", "via": "RSS"}, {"title": "China denounces US threat of sanctions over trade with Iran", "link": "https://www.theguardian.com/world/2026/aug/25/china-us-sanctions-iran-oil", "summary": "Beijing says it will take ‘all necessary measures’ to protect its interests as US steps up efforts to isolate TehranExplainer: could US sanctions threaten China-Iran ties?China has denounced the threat of US sanctions for its trade with Iran, saying any such measures would be illegal, and warned it ", "published": "2026-08-25T17:11:21", "source": "The Guardian", "country": "英国", "region": "欧洲", "via": "RSS"}, {"title": "Hundreds of millions at risk from Chinese shopping app malware", "link": "https://cnn.it/40OSomK", "summary": "", "published": "", "source": "CNN", "country": "美国", "region": "北美", "via": "RSS"}];
+var DATE = '2026-08-27';
+var REPO = 'liuyin1082003/News-fetcher';
+var ALL_DATES = [{"date": "2026-08-27", "articles": 54, "countries": 10}, {"date": "2026-08-26", "articles": 42, "countries": 11}, {"date": "2026-08-25", "articles": 29, "countries": 10}, {"date": "2026-08-24", "articles": 25, "countries": 10}, {"date": "2026-08-23", "articles": 12, "countries": 7}, {"date": "2026-08-22", "articles": 38, "countries": 10}, {"date": "2026-08-21", "articles": 31, "countries": 11}, {"date": "2026-08-20", "articles": 29, "countries": 9}, {"date": "2026-08-19", "articles": 17, "countries": 8}, {"date": "2026-08-18", "articles": 17, "countries": 9}, {"date": "2026-08-17", "articles": 5, "countries": 5}, {"date": "2026-08-16", "articles": 16, "countries": 7}, {"date": "2026-08-15", "articles": 29, "countries": 8}, {"date": "2026-08-14", "articles": 29, "countries": 10}, {"date": "2026-08-13", "articles": 29, "countries": 8}, {"date": "2026-08-12", "articles": 17, "countries": 8}, {"date": "2026-08-11", "articles": 28, "countries": 9}, {"date": "2026-08-10", "articles": 26, "countries": 7}, {"date": "2026-08-09", "articles": 28, "countries": 10}, {"date": "2026-08-08", "articles": 17, "countries": 7}, {"date": "2026-08-07", "articles": 23, "countries": 8}, {"date": "2026-08-06", "articles": 19, "countries": 8}, {"date": "2026-08-05", "articles": 16, "countries": 8}, {"date": "2026-08-04", "articles": 11, "countries": 6}, {"date": "2026-08-03", "articles": 16, "countries": 6}, {"date": "2026-08-02", "articles": 10, "countries": 6}, {"date": "2026-08-01", "articles": 21, "countries": 8}, {"date": "2026-07-31", "articles": 25, "countries": 8}, {"date": "2026-07-30", "articles": 24, "countries": 8}, {"date": "2026-07-29", "articles": 20, "countries": 7}, {"date": "2026-07-28", "articles": 23, "countries": 7}, {"date": "2026-07-27", "articles": 19, "countries": 7}, {"date": "2026-07-26", "articles": 12, "countries": 5}, {"date": "2026-07-25", "articles": 22, "countries": 7}, {"date": "2026-07-24", "articles": 25, "countries": 8}, {"date": "2026-07-23", "articles": 20, "countries": 8}, {"date": "2026-07-22", "articles": 27, "countries": 8}, {"date": "2026-07-21", "articles": 26, "countries": 7}, {"date": "2026-07-20", "articles": 18, "countries": 8}, {"date": "2026-07-19", "articles": 15, "countries": 7}, {"date": "2026-07-18", "articles": 35, "countries": 10}, {"date": "2026-07-17", "articles": 25, "countries": 7}, {"date": "2026-07-16", "articles": 25, "countries": 7}, {"date": "2026-07-15", "articles": 12, "countries": 8}, {"date": "2026-07-14", "articles": 16, "countries": 7}, {"date": "2026-07-13", "articles": 20, "countries": 7}, {"date": "2026-07-12", "articles": 29, "countries": 11}, {"date": "2026-07-11", "articles": 39, "countries": 10}, {"date": "2026-07-10", "articles": 31, "countries": 9}, {"date": "2026-07-09", "articles": 19, "countries": 6}, {"date": "2026-07-08", "articles": 29, "countries": 10}, {"date": "2026-07-07", "articles": 35, "countries": 8}, {"date": "2026-07-06", "articles": 24, "countries": 9}, {"date": "2026-07-05", "articles": 13, "countries": 4}, {"date": "2026-07-04", "articles": 20, "countries": 8}, {"date": "2026-07-03", "articles": 23, "countries": 11}, {"date": "2026-07-02", "articles": 20, "countries": 7}, {"date": "2026-07-01", "articles": 24, "countries": 7}, {"date": "2026-06-30", "articles": 25, "countries": 7}, {"date": "2026-06-29", "articles": 10, "countries": 7}, {"date": "2026-06-28", "articles": 27, "countries": 10}, {"date": "2026-06-27", "articles": 33, "countries": 10}, {"date": "2026-06-26", "articles": 23, "countries": 7}, {"date": "2026-06-25", "articles": 21, "countries": 7}, {"date": "2026-06-24", "articles": 24, "countries": 9}, {"date": "2026-06-23", "articles": 24, "countries": 10}, {"date": "2026-06-22", "articles": 8, "countries": 6}, {"date": "2026-06-21", "articles": 13, "countries": 9}, {"date": "2026-06-20", "articles": 10, "countries": 7}, {"date": "2026-06-19", "articles": 19, "countries": 10}, {"date": "2026-06-18", "articles": 25, "countries": 8}, {"date": "2026-06-17", "articles": 17, "countries": 7}, {"date": "2026-06-16", "articles": 24, "countries": 7}, {"date": "2026-06-15", "articles": 22, "countries": 6}, {"date": "2026-06-14", "articles": 12, "countries": 8}, {"date": "2026-06-13", "articles": 12, "countries": 7}, {"date": "2026-06-12", "articles": 20, "countries": 8}, {"date": "2026-06-11", "articles": 25, "countries": 7}];
+
+function escapeHtml(text) {
+    if(!text)return'';
+    var d=document.createElement('div');d.textContent=text;return d.innerHTML;
+}
+
+function render() {
+    if(!DATA.length){
+        document.getElementById('summaryBar').innerHTML='<span>⚠️ 今日未抓到涉华新闻，请稍后再试</span>';
+        return;
+    }
+
+    var countries=[...new Set(DATA.map(function(a){return a.country||'未知'}))];
+    document.getElementById('summaryBar').innerHTML=
+        '<span>📅 <strong>'+DATE+'</strong></span>'+
+        '<span>📰 <strong>'+DATA.length+'</strong> 篇</span>'+
+        '<span>🌍 <strong>'+countries.length+'</strong> 个国家/地区</span>'+
+        '<span>🔗 来源: RSS + Google News</span>';
+
+    var sel=document.getElementById('countryFilter');
+    sel.innerHTML='<option value="all">🌍 全部 ('+DATA.length+')</option>';
+    countries.forEach(function(c){
+        var n=DATA.filter(function(a){return a.country===c}).length;
+        sel.innerHTML+='<option value="'+escapeHtml(c)+'">'+escapeHtml(c)+' ('+n+')</option>';
+    });
+
+    var grouped={};
+    DATA.forEach(function(a){
+        var k=a.country||'未知';
+        if(!grouped[k])grouped[k]=[];
+        grouped[k].push(a);
+    });
+
+    var h='';
+    for(var c in grouped){
+        var arts=grouped[c];
+        h+='<div class="country-group"><div class="country-header">'+escapeHtml(c)+'<span class="count">'+arts.length+' 篇</span></div>';
+        arts.forEach(function(a){
+            var txt=(a.title+' '+a.summary).toLowerCase();
+            h+='<div class="card" data-country="'+escapeHtml(c)+'" data-search="'+escapeHtml(txt)+'">';
+            h+='<div class="card-title"><a href="'+escapeHtml(a.link||'#')+'" target="_blank" rel="noopener">'+escapeHtml(a.title)+'</a></div>';
+            h+='<div class="card-meta">';
+            h+='<span class="tag tag-source">'+escapeHtml(a.source||c)+'</span>';
+            if(a.via)h+='<span class="tag tag-via">'+escapeHtml(a.via)+'</span>';
+            h+='</div>';
+            if(a.summary)h+='<div class="card-summary">'+escapeHtml(a.summary)+'</div>';
+            h+='<div class="card-link"><a href="'+escapeHtml(a.link||'#')+'" target="_blank" rel="noopener">阅读原文 →</a></div>';
+            h+='</div>';
+        });
+        h+='</div>';
+    }
+    document.getElementById('articlesContainer').innerHTML=h;
+}
+
+function filter() {
+    var t=(document.getElementById('searchBox').value||'').toLowerCase().trim();
+    var c=document.getElementById('countryFilter').value;
+    var vis=false;
+    document.querySelectorAll('.card').forEach(function(card){
+        var ok=true;
+        if(c!=='all'&&card.dataset.country!==c)ok=false;
+        if(t&&ok&&(card.dataset.search||'').indexOf(t)===-1)ok=false;
+        card.style.display=ok?'':'none';
+        if(ok)vis=true;
+    });
+    document.querySelectorAll('.country-group').forEach(function(g){
+        var v=g.querySelectorAll('.card:not([style*="display: none"])').length;
+        g.style.display=v>0?'':'none';
+    });
+    document.getElementById('noResults').style.display=vis?'none':'block';
+}
+
+document.addEventListener('DOMContentLoaded',function(){
+    try{if(localStorage.getItem('nt')==='dark'){document.documentElement.setAttribute('data-theme','dark');document.getElementById('themeToggle').textContent='☀️'}}catch(e){}
+    render();
+    initDateNav();
+    document.getElementById('themeToggle').addEventListener('click',function(){
+        var n=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';
+        document.documentElement.setAttribute('data-theme',n);
+        this.textContent=n==='dark'?'☀️':'🌙';
+        try{localStorage.setItem('nt',n)}catch(e){}
+    });
+    var t;document.getElementById('searchBox').addEventListener('input',function(){clearTimeout(t);t=setTimeout(filter,250)});
+    document.getElementById('countryFilter').addEventListener('change',filter);
+    document.addEventListener('keydown',function(e){
+        if((e.ctrlKey||e.metaKey)&&e.key==='k'){e.preventDefault();document.getElementById('searchBox').focus()}
+        if((e.ctrlKey||e.metaKey)&&e.key==='d'&&!e.shiftKey){e.preventDefault();document.getElementById('themeToggle').click()}
+    });
+    console.log('📰 '+DATA.length+' 篇新闻');
+});
+
+function initDateNav(){
+    if(!ALL_DATES||!ALL_DATES.length)return;
+    // 找到当天在所有日期中的索引
+    var curIdx=-1;
+    for(var i=0;i<ALL_DATES.length;i++){if(ALL_DATES[i].date===DATE){curIdx=i;break;}}
+
+    // 填充日期下拉框
+    var sel=document.getElementById('datePicker');
+    ALL_DATES.forEach(function(d){
+        var opt=document.createElement('option');
+        opt.value=d.date;
+        // 显示格式: "6月12日 · 16篇 · 8国"
+        var parts=d.date.split('-');
+        var label=parseInt(parts[1])+'月'+parseInt(parts[2])+'日 · '+d.articles+'篇 · '+d.countries+'国';
+        if(d.date===DATE)label='📍 '+label;
+        opt.textContent=label;
+        if(d.date===DATE)opt.selected=true;
+        sel.appendChild(opt);
+    });
+    sel.addEventListener('change',function(){
+        var v=this.value;
+        if(v!==DATE)window.location.href='news_'+v+'.html';
+    });
+
+    // 前后天按钮
+    var btnPrev=document.getElementById('btnPrev');
+    var btnNext=document.getElementById('btnNext');
+    if(curIdx<=0)btnPrev.classList.add('disabled');
+    else btnPrev.addEventListener('click',function(e){e.preventDefault();if(curIdx>0)window.location.href='news_'+ALL_DATES[curIdx-1].date+'.html';});
+    if(curIdx>=ALL_DATES.length-1)btnNext.classList.add('disabled');
+    else btnNext.addEventListener('click',function(e){e.preventDefault();if(curIdx<ALL_DATES.length-1)window.location.href='news_'+ALL_DATES[curIdx+1].date+'.html';});
+
+    // 键盘左右箭头翻页
+    document.addEventListener('keydown',function(e){
+        if(e.target.tagName==='INPUT'||e.target.tagName==='SELECT')return;
+        if(e.key==='ArrowLeft'&&curIdx>0)window.location.href='news_'+ALL_DATES[curIdx-1].date+'.html';
+        if(e.key==='ArrowRight'&&curIdx<ALL_DATES.length-1)window.location.href='news_'+ALL_DATES[curIdx+1].date+'.html';
+    });
+}
+</script>
+</body>
+</html>
