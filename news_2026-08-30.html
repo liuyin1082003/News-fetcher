@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>国际涉华新闻日报 - 2026-08-30</title>
+<style>
+:root{
+    --bg:#f5f5f5;--card-bg:#fff;--text:#333;--text2:#666;--border:#e0e0e0;
+    --accent:#1a73e8;--accent-lt:#e8f0fe;--tag-bg:#e8f0fe;--tag-text:#1a73e8;
+    --highlight:#ffeb3b;--shadow:0 2px 8px rgba(0,0,0,.08);--hdr-bg:#1a1a2e;--hdr-text:#fff
+}
+[data-theme="dark"]{
+    --bg:#1a1a2e;--card-bg:#16213e;--text:#e0e0e0;--text2:#a0a0a0;--border:#2a2a4a;
+    --accent:#64b5f6;--accent-lt:#1e3a5f;--tag-bg:#1e3a5f;--tag-text:#64b5f6;
+    --highlight:#5c5200;--shadow:0 2px 8px rgba(0,0,0,.3);--hdr-bg:#0d0d1a
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);line-height:1.7;transition:background .3s,color .3s;min-height:100vh}
+.header{background:var(--hdr-bg);color:var(--hdr-text);padding:16px 32px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,.2)}
+.header h1{font-size:1.4em;font-weight:700}
+.header-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.btn{padding:8px 16px;border:1px solid var(--border);border-radius:6px;cursor:pointer;font-size:14px;background:var(--card-bg);color:var(--text);transition:all .2s;white-space:nowrap;text-decoration:none}
+.btn:hover{border-color:var(--accent);color:var(--accent)}
+.btn-nav{padding:8px 12px;border:1px solid var(--border);border-radius:6px;cursor:pointer;font-size:14px;background:var(--card-bg);color:var(--text);transition:all .2s;white-space:nowrap;text-decoration:none;font-weight:700}
+.btn-nav:hover{border-color:var(--accent);color:var(--accent)}
+.btn-nav.disabled{opacity:.3;pointer-events:none;cursor:default}
+.btn-back{border-color:var(--accent);color:var(--accent);font-weight:500}
+.date-picker{padding:8px 12px;border:1px solid var(--border);border-radius:6px;font-size:14px;background:var(--card-bg);color:var(--text);cursor:pointer;min-width:170px;font-weight:600;transition:border-color .2s}
+.date-picker:focus{outline:none;border-color:var(--accent)}
+.search-box{padding:8px 14px;border:1px solid var(--border);border-radius:6px;font-size:14px;background:var(--card-bg);color:var(--text);width:180px;transition:border-color .2s}
+.search-box:focus{outline:none;border-color:var(--accent)}
+.filter-select{padding:8px 12px;border:1px solid var(--border);border-radius:6px;font-size:14px;background:var(--card-bg);color:var(--text);cursor:pointer}
+.container{max-width:1000px;margin:0 auto;padding:24px 20px}
+.summary-bar{background:var(--card-bg);border:1px solid var(--border);border-radius:10px;padding:14px 24px;margin-bottom:20px;display:flex;gap:24px;flex-wrap:wrap;font-size:14px;color:var(--text2);box-shadow:var(--shadow)}
+.summary-bar strong{color:var(--accent);font-size:1.1em}
+.no-results{text-align:center;padding:40px;color:var(--text2);font-size:16px;display:none}
+.country-group{margin-bottom:28px}
+.country-header{font-size:1.2em;font-weight:700;margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid var(--accent);color:var(--accent);display:flex;align-items:center;gap:8px}
+.country-header .count{font-size:.8em;font-weight:400;color:var(--text2);margin-left:auto}
+.card{background:var(--card-bg);border:1px solid var(--border);border-radius:10px;padding:18px 22px;margin-bottom:14px;box-shadow:var(--shadow);transition:transform .2s,box-shadow .2s}
+.card:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,.12)}
+.card-title{font-size:1.05em;font-weight:600;margin-bottom:8px}
+.card-title a{color:var(--text);text-decoration:none}
+.card-title a:hover{color:var(--accent)}
+.card-meta{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-bottom:8px}
+.tag{display:inline-block;padding:2px 10px;border-radius:12px;font-size:12px;font-weight:500;white-space:nowrap}
+.tag-source{background:var(--accent-lt);color:var(--tag-text)}
+.tag-via{background:#fff3e0;color:#e65100}
+[data-theme="dark"] .tag-via{background:#3d2600;color:#ffb74d}
+.card-summary{font-size:14px;color:var(--text2);line-height:1.6;margin-bottom:4px}
+.card-link{font-size:13px}
+.card-link a{color:var(--accent);text-decoration:none}
+.card-link a:hover{text-decoration:underline}
+mark{background:var(--highlight);color:inherit;padding:1px 3px;border-radius:2px}
+.footer{text-align:center;padding:30px;color:var(--text2);font-size:13px;border-top:1px solid var(--border);margin-top:30px}
+.footer a{color:var(--accent)}
+@media print{
+    .header{position:static;background:#fff!important;color:#000!important;box-shadow:none}
+    .card{break-inside:avoid;box-shadow:none}
+    .btn,.search-box,.filter-select,.footer{display:none!important}
+}
+@media(max-width:768px){
+    .header{padding:12px 16px}.header h1{font-size:1.1em}
+    .container{padding:14px 10px}.card{padding:14px 16px}
+}
+</style>
+</head>
+<body>
+
+<!-- NEWS_META: {"articles": 37, "countries": 9} -->
+<div class="header">
+    <h1>📰 国际涉华新闻日报</h1>
+    <div class="header-actions">
+        <a href="#" class="btn btn-nav" id="btnPrev" title="前一天">◀</a>
+        <select class="date-picker" id="datePicker"></select>
+        <a href="#" class="btn btn-nav" id="btnNext" title="后一天">▶</a>
+        <a href="./" class="btn btn-back" title="返回日期列表">📋</a>
+        <input type="text" class="search-box" id="searchBox" placeholder="🔍 搜索..." />
+        <select class="filter-select" id="countryFilter">
+            <option value="all">🌍 全部</option>
+        </select>
+        <button class="btn" id="themeToggle">🌙</button>
+    </div>
+</div>
+
+<div class="container">
+    <div class="summary-bar" id="summaryBar"></div>
+    <div class="no-results" id="noResults">😕 没有匹配的结果，试试换一个搜索词。</div>
+    <div id="articlesContainer"></div>
+</div>
+
+<div class="footer">
+    <p>🤖 由 GitHub Actions 自动生成 · 每日更新 · <a href="https://github.com/liuyin1082003/News-fetcher">查看源码</a></p>
+    <p style="margin-top:6px"><a href="./">📅 查看其他日期的报道</a></p>
+</div>
+
+<script>
+var DATA = [{"title": "Chinese rescuers zero in on Tibet mudslide site as lake threat eases", "link": "https://www.straitstimes.com/asia/chinese-rescuers-zero-in-on-tibet-mudslide-site-as-lake-threat-eases", "summary": "", "published": "2026-08-29T16:54:07", "source": "Straits Times", "country": "新加坡", "region": "东南亚", "via": "RSS"}, {"title": "Nepal flash floods LIVE: Rescuers claw through mud as death toll rises to 675", "link": "https://www.thehindu.com/news/international/nepal-flash-floods-death-toll-missing-persons-fresh-flood-threat-glacier-collapse-live-updates-august-29-2026/article71403315.ece", "summary": "Figures from Nepal and China put the number of missing people close to 3,000", "published": "2026-08-29T16:46:21", "source": "The Hindu", "country": "印度", "region": "南亚", "via": "RSS"}, {"title": "Nepal und Tibet: SPIEGEL-Korrespondent berichtet aus der Unglücksregion", "link": "https://www.spiegel.de/ausland/nepal-und-tibet-spiegel-korrespondent-berichtet-aus-der-ungluecksregion-a-e505766a-641e-4b0b-9654-2b9f0ba37d5b#ref=rss", "summary": "Nach der Katastrophe in Nepal und Tibet werden weiterhin fast 3000 Menschen vermisst, mindestens 682 sind tot. Im Video berichtet SPIEGEL-Korrespondent Serafin Reiber aus einem Dorf, das seit der Katastrophe von der Außenwelt abgeschnitten war.", "published": "2026-08-29T16:04:00", "source": "Der Spiegel", "country": "德国", "region": "欧洲", "via": "RSS"}, {"title": "Nepal flood death toll rises to 675, more than 2,400 missing", "link": "https://www.thehindu.com/news/international/nepal-flash-floods-death-toll-rises-number-of-missing-jumps-to-more-than-2000/article71403649.ece", "summary": "Search and rescue operations remain a top priority, focusing on missing individuals, including foreign nationals, says Foreign Minister; China sent 5 tunnel experts to assist Nepalese rescue teams, while 114 Indian nationals rescued", "published": "2026-08-29T16:03:31", "source": "The Hindu", "country": "印度", "region": "南亚", "via": "RSS"}, {"title": "‘Extremely risky operations’: Rescuers work amid threat of river banks bursting", "link": "https://www.france24.com/en/extremely-risky-operations-rescuers-work-amid-threat-of-river-banks-bursting", "summary": "Nearly 3,000 people remained missing on Saturday, while 682 deaths had been confirmed after flash floods and landslides hit the Nepal-Tibet border. Rescue operations remain risky as a lake formed upstream by the floods threatens to burst its banks. FRANCE 24's Shahzaib Wahlah reports.", "published": "2026-08-29T15:22:32", "source": "France 24 (EN)", "country": "法国", "region": "欧洲", "via": "RSS"}, {"title": "Beijing expands purge of top generals", "link": "https://www.washingtonpost.com/world/2026/08/29/beijing-expands-purge-top-generals/", "summary": "席 is targeting officers affiliated with previously ousted leaders, analysts say, even as Beijing seeks to project power across the Indo-Pacific.", "published": "2026-08-29T14:41:56", "source": "Washington Post", "country": "美国", "region": "北美", "via": "RSS"}, {"title": "Death toll from Nepal-Tibet floods rises to over 600", "link": "https://www.dw.com/en/death-toll-from-nepal-tibet-floods-rises-to-over-600/a-78555290?maca=en-rss-en-all-1573-rdf", "summary": "Heavy rain is complicating an already difficult rescue effort, as hundreds remain missing three days after deadly flash floods hit the Nepal-Tibet border region.", "published": "2026-08-29T14:32:00", "source": "Deutsche Welle", "country": "德国", "region": "欧洲", "via": "RSS"}, {"title": "Photos: See the aftermath of deadly flash floods in Nepal", "link": "https://www.npr.org/2026/08/29/nx-s1-5948209/photos-see-the-aftermath-of-deadly-flash-floods-in-nepal", "summary": "Nepal officials say the death toll has continues to rise in Wednesday's floods that washed away communities in Nepal and Tibet, which is held by China. About 2,500 people are missing in both areas.", "published": "2026-08-29T14:22:19", "source": "NPR", "country": "美国", "region": "北美", "via": "RSS"}, {"title": "The US is trying to drive wedge between China, its neighbors — EEF organizer", "link": "https://tass.com/politics/2179331", "summary": "Anton Kobyakov recalled that China and some ASEAN countries have territorial disputes in the South China Sea", "published": "2026-08-29T13:41:16", "source": "TASS", "country": "俄罗斯", "region": "东欧", "via": "RSS"}, {"title": "Chinese rescuers race to reach mudslide survivors in Nepal-China border", "link": "https://www.aljazeera.com/video/newsfeed/2026/8/29/chinese-rescuers-race-to-reach-mudslide-survivors-in-nepal-china-border?traffic_source=rss", "summary": "Rescuers raced to clear roads leading to the mudslide-hit border port of Gyirong, China&#039;s Tibet Autonomous Region.", "published": "2026-08-29T13:10:47", "source": "Al Jazeera", "country": "卡塔尔", "region": "中东", "via": "RSS"}, {"title": "Rescue operations ongoing as death toll continues to rise", "link": "https://www.france24.com/en/rescue-operations-ongoing-as-death-toll-continues-to-rise", "summary": "Most arrive with nothing except the clothes they are wearing. As rescue efforts in communities buried by catastrophic flash floods along the border between Nepal and China entered their fourth day Saturday, authorities continued finding survivors and transporting them to safety. At relief centers, a", "published": "2026-08-29T12:37:17", "source": "France 24 (EN)", "country": "法国", "region": "欧洲", "via": "RSS"}, {"title": "Eight Russians missing on China-Nepal border — Russian Embassy", "link": "https://tass.com/emergencies/2179309", "summary": "The diplomatic mission reported that they had not received any information about their discovery", "published": "2026-08-29T12:08:37", "source": "TASS", "country": "俄罗斯", "region": "东欧", "via": "RSS"}, {"title": "Risk of lake burst near China-Nepal disaster site wanes", "link": "https://www.thehindu.com/news/international/risk-of-lake-burst-near-china-nepal-disaster-site-wanes/article71404414.ece", "summary": "Experts and authorities have warned of an extremely high risk of secondary disasters in the valley, particularly from the lake formed by glacier debris, which could threaten rescue operations downstream", "published": "2026-08-29T11:53:41", "source": "The Hindu", "country": "印度", "region": "南亚", "via": "RSS"}, {"title": "The mouse that roared: How Vietnam beat China and India in the export game", "link": "https://timesofindia.indiatimes.com/business/international-business/the-mouse-that-roared-how-vietnam-beat-china-and-india-in-the-export-game/articleshow/133611024.cms", "summary": "", "published": "2026-08-29T11:47:08", "source": "Times of India", "country": "印度", "region": "南亚", "via": "RSS"}, {"title": "Tour boss searches for missing brother and 54 pilgrims by air after Nepal floods", "link": "https://www.straitstimes.com/asia/south-asia/tour-boss-searches-by-air-for-missing-brother-and-54-pilgrims-after-flash-flood", "summary": "The tour group was last known to be inside the Gyoring Port complex at the Nepal-Tibet border", "published": "2026-08-29T11:40:00", "source": "Straits Times", "country": "新加坡", "region": "东南亚", "via": "RSS"}, {"title": "Les inondations au Népal et au Tibet, une catastrophe racontée en carte et en images par satellite", "link": "https://www.lemonde.fr/planete/article/2026/08/29/les-inondations-au-nepal-et-au-tibet-une-catastrophe-naturelle-racontee-en-carte-et-en-images_6759987_3244.html", "summary": "La comparaison des images par satellite avant et après la catastrophe qui a ravagé une zone frontalière entre le Népal et le Tibet montre l’ampleur des destructions.", "published": "2026-08-29T10:59:09", "source": "Le Monde", "country": "法国", "region": "欧洲", "via": "RSS"}, {"title": "Russian forces liberate Rubezhnoye, Novoandreyevka, take control of Khrapovshchina", "link": "https://tass.com/defense/2179303", "summary": "Russian forces also struck Ukrainian fuel and energy facilities and logistics centers used by Ukrainian forces over the past day, the Russian Defense Ministry said", "published": "2026-08-29T10:42:54", "source": "TASS", "country": "俄罗斯", "region": "东欧", "via": "RSS"}, {"title": "Leaders of 17 countries, UN secretary-general to attend SCO summit in Bishkek", "link": "https://tass.com/world/2179281", "summary": "The summit of the Council of Heads of State of the Shanghai Cooperation Organization will be held in Bishkek from August 31 to September 1", "published": "2026-08-29T10:24:23", "source": "TASS", "country": "俄罗斯", "region": "东欧", "via": "RSS"}, {"title": "Nepal-Tibet floods: 72 Malaysians safe in China, 55 in Nepal still missing", "link": "https://www.straitstimes.com/asia/se-asia/nepal-tibet-floods-72-malaysians-safe-in-china-55-in-nepal-still-missing", "summary": "Another 36 Malaysians have also been reported as uncontactable in China due to telecommunications disruptions.", "published": "2026-08-29T08:20:00", "source": "Straits Times", "country": "新加坡", "region": "东南亚", "via": "RSS"}, {"title": "War weighs on Iran's economy as U.S. intensifies sanctions", "link": "https://www.thehindu.com/news/international/war-weighs-on-irans-economy-as-us-intensifies-sanctions/article71403631.ece", "summary": "Washington has warned countries to ‌cut their business ties with Iran or face secondary sanctions, though the Treasury Department stopped short of imposing ‌penalties ⁠against major Iranian trade partners such as China and India,", "published": "2026-08-29T07:50:45", "source": "The Hindu", "country": "印度", "region": "南亚", "via": "RSS"}, {"title": "Risk of lake bursting near China-Nepal border disaster site wanes", "link": "https://www.straitstimes.com/asia/south-asia/risk-of-lake-burst-near-china-nepal-border-disaster-site-wanes", "summary": "The lake had formed after a glacier collapsed on Aug 26.", "published": "2026-08-29T06:14:33", "source": "Straits Times", "country": "新加坡", "region": "东南亚", "via": "RSS"}, {"title": "A shared disaster, beyond borders and geopolitics", "link": "https://www.thehindu.com/opinion/op-ed/a-shared-disaster-beyond-borders-and-geopolitics/article71401817.ece", "summary": "For Nepal, India and China, the devastating cross-border floods are a stark reminder of nature’s fury, and that cooperation must transcend the boundaries of geopolitics", "published": "2026-08-29T06:13:26", "source": "The Hindu", "country": "印度", "region": "南亚", "via": "RSS"}, {"title": "Nepal-Tibet floods: Over 630 bodies recovered, number of missing soars to nearly 3,000", "link": "https://www.straitstimes.com/asia/nepal-tibet-floods-over-630-bodies-recovered-number-of-missing-soars-to-nearly-3000", "summary": "The Red Cross said as many as 93,000 people may have been affected, with the death toll expected to rise.", "published": "2026-08-29T06:10:00", "source": "Straits Times", "country": "新加坡", "region": "东南亚", "via": "RSS"}, {"title": "🔴 Nepal-Tibet floods live: Death toll passes 600, nearly 3,000 people missing", "link": "https://www.france24.com/en/asia-pacific/20260829-nepal-tibet-floods-live-death-toll-passes-600-nearly-2-500-people-still-missing", "summary": "", "published": "2026-08-29T05:38:21", "source": "France 24 (EN)", "country": "法国", "region": "欧洲", "via": "RSS"}, {"title": "Number of missing in Nepal and China floods soars to nearly 3,000", "link": "https://www.japantimes.co.jp/news/2026/08/29/asia-pacific/nepal-china-floods-toll/", "summary": "The trauma of the catastrophe has been \"enormous,\" and as many as 93,000 people may have been affected, the Red Cross said.", "published": "2026-08-29T05:33:00", "source": "Japan Times", "country": "日本", "region": "东亚", "via": "RSS"}, {"title": "Flood rescue enters fourth day in Nepal-China border as weather hampers air operations", "link": "https://www.thehindu.com/news/international/nepal-china-flood-2026-glof-death-toll-missing-rescue-operations/article71403538.ece", "summary": "Poor weather hampered aerial rescue operations in Nepal as the search for hundreds of missing people in areas devastated by catastrophic flash floods along the border with China entered its fourth day", "published": "2026-08-29T05:08:46", "source": "The Hindu", "country": "印度", "region": "南亚", "via": "RSS"}, {"title": "Nepal-Tibet floods live: Rescuers race to find 100 workers trapped in tunnels as death toll tops 680", "link": "https://www.france24.com/en/asia-pacific/20260829-nepal-tibet-floods-live-death-toll-passes-600-nearly-2-500-people-still-missing", "summary": "Nepali army rescue teams raced Saturday to reach more than 100 people trapped inside hydropower tunnels, three days after devastating floods struck the site. At least 675 people were killed in Nepal, according to the country's disaster authority. Another seven people were confirmed dead in Tibet, Ch", "published": "2026-08-29T05:06:17", "source": "France 24 (EN)", "country": "法国", "region": "欧洲", "via": "RSS"}, {"title": "'Grateful for special gesture': PM Modi thanks Uzbek prez for warm welcome", "link": "https://timesofindia.indiatimes.com/india/pm-modi-begins-four-day-uzbekistan-kyrgyzstan-visit-for-sco-summit-whats-on-agenda/articleshow/133603378.cms", "summary": "Prime Minister Narendra Modi began a four-day visit to Uzbekistan and the Kyrgyz Republic. He will hold bilateral talks with Uzbek President Shavkat Mirziyoyev in Tashkent. Modi will then attend the 26th Shanghai Cooperation Organisation Summit in Bishkek. This visit aims to strengthen India's strat", "published": "2026-08-29T04:11:45", "source": "Times of India", "country": "印度", "region": "南亚", "via": "RSS"}, {"title": "What we know about the Australians missing in the Nepal floods", "link": "https://www.theguardian.com/australia-news/2026/aug/29/what-we-know-about-the-australians-missing-in-the-nepal-floods", "summary": "More than 40 Australians are among several thousand people unaccounted for after catastrophic flooding on the Nepal-Tibet borderHow the deadly Nepal and Tibet flash flood unfolded – a visual guideGet our breaking news email, free app or daily news podcastAn 11-year-old child, an ADF member and many ", "published": "2026-08-29T03:54:59", "source": "The Guardian", "country": "英国", "region": "欧洲", "via": "RSS"}, {"title": "Footage of Tibet floods isn't being shown in China - and we know little about victims there", "link": "https://www.bbc.co.uk/news/articles/cx2z415w2gpo?at_medium=RSS&at_campaign=rss", "summary": "Some of the most dramatic footage from the deadly flash flooding is hidden from public view in China.", "published": "2026-08-29T03:54:11", "source": "BBC", "country": "英国", "region": "欧洲", "via": "RSS"}, {"title": "Search continues as number missing in Nepal-Tibet floods rises to 2,478 – as it happened", "link": "https://www.theguardian.com/world/live/2026/aug/28/nepal-tibet-flash-floods-hundreds-dead-missing-day-three-live-updates", "summary": "This live blog is now closed‘The flood took everything I have’: survivors grieve for relatives and homes swept away in NepalVisual guide: how the deadly flooding unfoldedTell us: have you been affected by the flash floods?More now on the Nepali army’s rescue operation to save about 100 people trappe", "published": "2026-08-29T03:49:58", "source": "The Guardian", "country": "英国", "region": "欧洲", "via": "RSS"}, {"title": "China removes high-ranking officers from key military body", "link": "https://www.japantimes.co.jp/news/2026/08/29/asia-pacific/politics/china-top-officers-removed/", "summary": "Zhang Youxia's position as the more senior of two vice chairmen on the Central Military Commission had made him China's highest-ranked general.", "published": "2026-08-29T03:15:00", "source": "Japan Times", "country": "日本", "region": "东亚", "via": "RSS"}, {"title": "Nepali government asks Meta, TikTok to remove graphic flood content, misinformation", "link": "https://www.straitstimes.com/asia/south-asia/nepali-government-asks-meta-tiktok-to-remove-graphic-flood-content-misinformation", "summary": "The request comes amid a surge in misleading material on social media following the Aug 26 flash flood.", "published": "2026-08-29T01:30:00", "source": "Straits Times", "country": "新加坡", "region": "东南亚", "via": "RSS"}, {"title": "A candle against Hong Kong’s growing darkness", "link": "https://www.japantimes.co.jp/commentary/2026/08/29/world/jto-clifford-hong-kong-darkness/", "summary": "Chow Hang-tung, one of Hong Kong's most prominent political prisoners, has been behind bars for more than five years. Now she's facing another 10-year prison sentence.", "published": "2026-08-28T23:00:00", "source": "Japan Times", "country": "日本", "region": "东亚", "via": "RSS"}, {"title": "Number of Australians missing in Nepal’s deadly floods rises again, as Albanese deploys more personnel", "link": "https://www.theguardian.com/world/2026/aug/29/australians-missing-nepal-floods-total-rises-albanese-dfat-personnel-arriving", "summary": "There are now 41 Australians missing, and four rapid response team members are expected to arrive in KathmanduAt least 93,000 ‘in great need’ after Nepal-Tibet flash floodsHow the deadly Nepal and Tibet flash flood unfolded – a visual guideGet our breaking news email, free app or daily news podcastT", "published": "2026-08-28T22:53:57", "source": "The Guardian", "country": "英国", "region": "欧洲", "via": "RSS"}, {"title": "Satellite images reveal scale of flood devastation in Nepal villages", "link": "https://www.bbc.co.uk/news/articles/cd68vpjv21do?at_medium=RSS&at_campaign=rss", "summary": "Before-and-after images show villages, bridges and a key Nepal-Tibet border crossing washed away by devastating floodwaters.", "published": "2026-08-28T17:36:54", "source": "BBC", "country": "英国", "region": "欧洲", "via": "RSS"}, {"title": "Hundreds of millions at risk from Chinese shopping app malware", "link": "https://cnn.it/40OSomK", "summary": "", "published": "", "source": "CNN", "country": "美国", "region": "北美", "via": "RSS"}];
+var DATE = '2026-08-30';
+var REPO = 'liuyin1082003/News-fetcher';
+var ALL_DATES = [{"date": "2026-08-30", "articles": 37, "countries": 9}, {"date": "2026-08-29", "articles": 56, "countries": 11}, {"date": "2026-08-28", "articles": 51, "countries": 11}, {"date": "2026-08-27", "articles": 54, "countries": 10}, {"date": "2026-08-26", "articles": 42, "countries": 11}, {"date": "2026-08-25", "articles": 29, "countries": 10}, {"date": "2026-08-24", "articles": 25, "countries": 10}, {"date": "2026-08-23", "articles": 12, "countries": 7}, {"date": "2026-08-22", "articles": 38, "countries": 10}, {"date": "2026-08-21", "articles": 31, "countries": 11}, {"date": "2026-08-20", "articles": 29, "countries": 9}, {"date": "2026-08-19", "articles": 17, "countries": 8}, {"date": "2026-08-18", "articles": 17, "countries": 9}, {"date": "2026-08-17", "articles": 5, "countries": 5}, {"date": "2026-08-16", "articles": 16, "countries": 7}, {"date": "2026-08-15", "articles": 29, "countries": 8}, {"date": "2026-08-14", "articles": 29, "countries": 10}, {"date": "2026-08-13", "articles": 29, "countries": 8}, {"date": "2026-08-12", "articles": 17, "countries": 8}, {"date": "2026-08-11", "articles": 28, "countries": 9}, {"date": "2026-08-10", "articles": 26, "countries": 7}, {"date": "2026-08-09", "articles": 28, "countries": 10}, {"date": "2026-08-08", "articles": 17, "countries": 7}, {"date": "2026-08-07", "articles": 23, "countries": 8}, {"date": "2026-08-06", "articles": 19, "countries": 8}, {"date": "2026-08-05", "articles": 16, "countries": 8}, {"date": "2026-08-04", "articles": 11, "countries": 6}, {"date": "2026-08-03", "articles": 16, "countries": 6}, {"date": "2026-08-02", "articles": 10, "countries": 6}, {"date": "2026-08-01", "articles": 21, "countries": 8}, {"date": "2026-07-31", "articles": 25, "countries": 8}, {"date": "2026-07-30", "articles": 24, "countries": 8}, {"date": "2026-07-29", "articles": 20, "countries": 7}, {"date": "2026-07-28", "articles": 23, "countries": 7}, {"date": "2026-07-27", "articles": 19, "countries": 7}, {"date": "2026-07-26", "articles": 12, "countries": 5}, {"date": "2026-07-25", "articles": 22, "countries": 7}, {"date": "2026-07-24", "articles": 25, "countries": 8}, {"date": "2026-07-23", "articles": 20, "countries": 8}, {"date": "2026-07-22", "articles": 27, "countries": 8}, {"date": "2026-07-21", "articles": 26, "countries": 7}, {"date": "2026-07-20", "articles": 18, "countries": 8}, {"date": "2026-07-19", "articles": 15, "countries": 7}, {"date": "2026-07-18", "articles": 35, "countries": 10}, {"date": "2026-07-17", "articles": 25, "countries": 7}, {"date": "2026-07-16", "articles": 25, "countries": 7}, {"date": "2026-07-15", "articles": 12, "countries": 8}, {"date": "2026-07-14", "articles": 16, "countries": 7}, {"date": "2026-07-13", "articles": 20, "countries": 7}, {"date": "2026-07-12", "articles": 29, "countries": 11}, {"date": "2026-07-11", "articles": 39, "countries": 10}, {"date": "2026-07-10", "articles": 31, "countries": 9}, {"date": "2026-07-09", "articles": 19, "countries": 6}, {"date": "2026-07-08", "articles": 29, "countries": 10}, {"date": "2026-07-07", "articles": 35, "countries": 8}, {"date": "2026-07-06", "articles": 24, "countries": 9}, {"date": "2026-07-05", "articles": 13, "countries": 4}, {"date": "2026-07-04", "articles": 20, "countries": 8}, {"date": "2026-07-03", "articles": 23, "countries": 11}, {"date": "2026-07-02", "articles": 20, "countries": 7}, {"date": "2026-07-01", "articles": 24, "countries": 7}, {"date": "2026-06-30", "articles": 25, "countries": 7}, {"date": "2026-06-29", "articles": 10, "countries": 7}, {"date": "2026-06-28", "articles": 27, "countries": 10}, {"date": "2026-06-27", "articles": 33, "countries": 10}, {"date": "2026-06-26", "articles": 23, "countries": 7}, {"date": "2026-06-25", "articles": 21, "countries": 7}, {"date": "2026-06-24", "articles": 24, "countries": 9}, {"date": "2026-06-23", "articles": 24, "countries": 10}, {"date": "2026-06-22", "articles": 8, "countries": 6}, {"date": "2026-06-21", "articles": 13, "countries": 9}, {"date": "2026-06-20", "articles": 10, "countries": 7}, {"date": "2026-06-19", "articles": 19, "countries": 10}, {"date": "2026-06-18", "articles": 25, "countries": 8}, {"date": "2026-06-17", "articles": 17, "countries": 7}, {"date": "2026-06-16", "articles": 24, "countries": 7}, {"date": "2026-06-15", "articles": 22, "countries": 6}, {"date": "2026-06-14", "articles": 12, "countries": 8}, {"date": "2026-06-13", "articles": 12, "countries": 7}, {"date": "2026-06-12", "articles": 20, "countries": 8}, {"date": "2026-06-11", "articles": 25, "countries": 7}];
+
+function escapeHtml(text) {
+    if(!text)return'';
+    var d=document.createElement('div');d.textContent=text;return d.innerHTML;
+}
+
+function render() {
+    if(!DATA.length){
+        document.getElementById('summaryBar').innerHTML='<span>⚠️ 今日未抓到涉华新闻，请稍后再试</span>';
+        return;
+    }
+
+    var countries=[...new Set(DATA.map(function(a){return a.country||'未知'}))];
+    document.getElementById('summaryBar').innerHTML=
+        '<span>📅 <strong>'+DATE+'</strong></span>'+
+        '<span>📰 <strong>'+DATA.length+'</strong> 篇</span>'+
+        '<span>🌍 <strong>'+countries.length+'</strong> 个国家/地区</span>'+
+        '<span>🔗 来源: RSS + Google News</span>';
+
+    var sel=document.getElementById('countryFilter');
+    sel.innerHTML='<option value="all">🌍 全部 ('+DATA.length+')</option>';
+    countries.forEach(function(c){
+        var n=DATA.filter(function(a){return a.country===c}).length;
+        sel.innerHTML+='<option value="'+escapeHtml(c)+'">'+escapeHtml(c)+' ('+n+')</option>';
+    });
+
+    var grouped={};
+    DATA.forEach(function(a){
+        var k=a.country||'未知';
+        if(!grouped[k])grouped[k]=[];
+        grouped[k].push(a);
+    });
+
+    var h='';
+    for(var c in grouped){
+        var arts=grouped[c];
+        h+='<div class="country-group"><div class="country-header">'+escapeHtml(c)+'<span class="count">'+arts.length+' 篇</span></div>';
+        arts.forEach(function(a){
+            var txt=(a.title+' '+a.summary).toLowerCase();
+            h+='<div class="card" data-country="'+escapeHtml(c)+'" data-search="'+escapeHtml(txt)+'">';
+            h+='<div class="card-title"><a href="'+escapeHtml(a.link||'#')+'" target="_blank" rel="noopener">'+escapeHtml(a.title)+'</a></div>';
+            h+='<div class="card-meta">';
+            h+='<span class="tag tag-source">'+escapeHtml(a.source||c)+'</span>';
+            if(a.via)h+='<span class="tag tag-via">'+escapeHtml(a.via)+'</span>';
+            h+='</div>';
+            if(a.summary)h+='<div class="card-summary">'+escapeHtml(a.summary)+'</div>';
+            h+='<div class="card-link"><a href="'+escapeHtml(a.link||'#')+'" target="_blank" rel="noopener">阅读原文 →</a></div>';
+            h+='</div>';
+        });
+        h+='</div>';
+    }
+    document.getElementById('articlesContainer').innerHTML=h;
+}
+
+function filter() {
+    var t=(document.getElementById('searchBox').value||'').toLowerCase().trim();
+    var c=document.getElementById('countryFilter').value;
+    var vis=false;
+    document.querySelectorAll('.card').forEach(function(card){
+        var ok=true;
+        if(c!=='all'&&card.dataset.country!==c)ok=false;
+        if(t&&ok&&(card.dataset.search||'').indexOf(t)===-1)ok=false;
+        card.style.display=ok?'':'none';
+        if(ok)vis=true;
+    });
+    document.querySelectorAll('.country-group').forEach(function(g){
+        var v=g.querySelectorAll('.card:not([style*="display: none"])').length;
+        g.style.display=v>0?'':'none';
+    });
+    document.getElementById('noResults').style.display=vis?'none':'block';
+}
+
+document.addEventListener('DOMContentLoaded',function(){
+    try{if(localStorage.getItem('nt')==='dark'){document.documentElement.setAttribute('data-theme','dark');document.getElementById('themeToggle').textContent='☀️'}}catch(e){}
+    render();
+    initDateNav();
+    document.getElementById('themeToggle').addEventListener('click',function(){
+        var n=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';
+        document.documentElement.setAttribute('data-theme',n);
+        this.textContent=n==='dark'?'☀️':'🌙';
+        try{localStorage.setItem('nt',n)}catch(e){}
+    });
+    var t;document.getElementById('searchBox').addEventListener('input',function(){clearTimeout(t);t=setTimeout(filter,250)});
+    document.getElementById('countryFilter').addEventListener('change',filter);
+    document.addEventListener('keydown',function(e){
+        if((e.ctrlKey||e.metaKey)&&e.key==='k'){e.preventDefault();document.getElementById('searchBox').focus()}
+        if((e.ctrlKey||e.metaKey)&&e.key==='d'&&!e.shiftKey){e.preventDefault();document.getElementById('themeToggle').click()}
+    });
+    console.log('📰 '+DATA.length+' 篇新闻');
+});
+
+function initDateNav(){
+    if(!ALL_DATES||!ALL_DATES.length)return;
+    // 找到当天在所有日期中的索引
+    var curIdx=-1;
+    for(var i=0;i<ALL_DATES.length;i++){if(ALL_DATES[i].date===DATE){curIdx=i;break;}}
+
+    // 填充日期下拉框
+    var sel=document.getElementById('datePicker');
+    ALL_DATES.forEach(function(d){
+        var opt=document.createElement('option');
+        opt.value=d.date;
+        // 显示格式: "6月12日 · 16篇 · 8国"
+        var parts=d.date.split('-');
+        var label=parseInt(parts[1])+'月'+parseInt(parts[2])+'日 · '+d.articles+'篇 · '+d.countries+'国';
+        if(d.date===DATE)label='📍 '+label;
+        opt.textContent=label;
+        if(d.date===DATE)opt.selected=true;
+        sel.appendChild(opt);
+    });
+    sel.addEventListener('change',function(){
+        var v=this.value;
+        if(v!==DATE)window.location.href='news_'+v+'.html';
+    });
+
+    // 前后天按钮
+    var btnPrev=document.getElementById('btnPrev');
+    var btnNext=document.getElementById('btnNext');
+    if(curIdx<=0)btnPrev.classList.add('disabled');
+    else btnPrev.addEventListener('click',function(e){e.preventDefault();if(curIdx>0)window.location.href='news_'+ALL_DATES[curIdx-1].date+'.html';});
+    if(curIdx>=ALL_DATES.length-1)btnNext.classList.add('disabled');
+    else btnNext.addEventListener('click',function(e){e.preventDefault();if(curIdx<ALL_DATES.length-1)window.location.href='news_'+ALL_DATES[curIdx+1].date+'.html';});
+
+    // 键盘左右箭头翻页
+    document.addEventListener('keydown',function(e){
+        if(e.target.tagName==='INPUT'||e.target.tagName==='SELECT')return;
+        if(e.key==='ArrowLeft'&&curIdx>0)window.location.href='news_'+ALL_DATES[curIdx-1].date+'.html';
+        if(e.key==='ArrowRight'&&curIdx<ALL_DATES.length-1)window.location.href='news_'+ALL_DATES[curIdx+1].date+'.html';
+    });
+}
+</script>
+</body>
+</html>
