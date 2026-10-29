@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>国际涉华新闻日报 - 2026-10-30</title>
+<style>
+:root{
+    --bg:#f5f5f5;--card-bg:#fff;--text:#333;--text2:#666;--border:#e0e0e0;
+    --accent:#1a73e8;--accent-lt:#e8f0fe;--tag-bg:#e8f0fe;--tag-text:#1a73e8;
+    --highlight:#ffeb3b;--shadow:0 2px 8px rgba(0,0,0,.08);--hdr-bg:#1a1a2e;--hdr-text:#fff
+}
+[data-theme="dark"]{
+    --bg:#1a1a2e;--card-bg:#16213e;--text:#e0e0e0;--text2:#a0a0a0;--border:#2a2a4a;
+    --accent:#64b5f6;--accent-lt:#1e3a5f;--tag-bg:#1e3a5f;--tag-text:#64b5f6;
+    --highlight:#5c5200;--shadow:0 2px 8px rgba(0,0,0,.3);--hdr-bg:#0d0d1a
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);line-height:1.7;transition:background .3s,color .3s;min-height:100vh}
+.header{background:var(--hdr-bg);color:var(--hdr-text);padding:16px 32px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,.2)}
+.header h1{font-size:1.4em;font-weight:700}
+.header-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.btn{padding:8px 16px;border:1px solid var(--border);border-radius:6px;cursor:pointer;font-size:14px;background:var(--card-bg);color:var(--text);transition:all .2s;white-space:nowrap;text-decoration:none}
+.btn:hover{border-color:var(--accent);color:var(--accent)}
+.btn-nav{padding:8px 12px;border:1px solid var(--border);border-radius:6px;cursor:pointer;font-size:14px;background:var(--card-bg);color:var(--text);transition:all .2s;white-space:nowrap;text-decoration:none;font-weight:700}
+.btn-nav:hover{border-color:var(--accent);color:var(--accent)}
+.btn-nav.disabled{opacity:.3;pointer-events:none;cursor:default}
+.btn-back{border-color:var(--accent);color:var(--accent);font-weight:500}
+.date-picker{padding:8px 12px;border:1px solid var(--border);border-radius:6px;font-size:14px;background:var(--card-bg);color:var(--text);cursor:pointer;min-width:170px;font-weight:600;transition:border-color .2s}
+.date-picker:focus{outline:none;border-color:var(--accent)}
+.search-box{padding:8px 14px;border:1px solid var(--border);border-radius:6px;font-size:14px;background:var(--card-bg);color:var(--text);width:180px;transition:border-color .2s}
+.search-box:focus{outline:none;border-color:var(--accent)}
+.filter-select{padding:8px 12px;border:1px solid var(--border);border-radius:6px;font-size:14px;background:var(--card-bg);color:var(--text);cursor:pointer}
+.container{max-width:1000px;margin:0 auto;padding:24px 20px}
+.summary-bar{background:var(--card-bg);border:1px solid var(--border);border-radius:10px;padding:14px 24px;margin-bottom:20px;display:flex;gap:24px;flex-wrap:wrap;font-size:14px;color:var(--text2);box-shadow:var(--shadow)}
+.summary-bar strong{color:var(--accent);font-size:1.1em}
+.no-results{text-align:center;padding:40px;color:var(--text2);font-size:16px;display:none}
+.country-group{margin-bottom:28px}
+.country-header{font-size:1.2em;font-weight:700;margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid var(--accent);color:var(--accent);display:flex;align-items:center;gap:8px}
+.country-header .count{font-size:.8em;font-weight:400;color:var(--text2);margin-left:auto}
+.card{background:var(--card-bg);border:1px solid var(--border);border-radius:10px;padding:18px 22px;margin-bottom:14px;box-shadow:var(--shadow);transition:transform .2s,box-shadow .2s}
+.card:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,.12)}
+.card-title{font-size:1.05em;font-weight:600;margin-bottom:8px}
+.card-title a{color:var(--text);text-decoration:none}
+.card-title a:hover{color:var(--accent)}
+.card-meta{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-bottom:8px}
+.tag{display:inline-block;padding:2px 10px;border-radius:12px;font-size:12px;font-weight:500;white-space:nowrap}
+.tag-source{background:var(--accent-lt);color:var(--tag-text)}
+.tag-via{background:#fff3e0;color:#e65100}
+[data-theme="dark"] .tag-via{background:#3d2600;color:#ffb74d}
+.card-summary{font-size:14px;color:var(--text2);line-height:1.6;margin-bottom:4px}
+.card-link{font-size:13px}
+.card-link a{color:var(--accent);text-decoration:none}
+.card-link a:hover{text-decoration:underline}
+mark{background:var(--highlight);color:inherit;padding:1px 3px;border-radius:2px}
+.footer{text-align:center;padding:30px;color:var(--text2);font-size:13px;border-top:1px solid var(--border);margin-top:30px}
+.footer a{color:var(--accent)}
+@media print{
+    .header{position:static;background:#fff!important;color:#000!important;box-shadow:none}
+    .card{break-inside:avoid;box-shadow:none}
+    .btn,.search-box,.filter-select,.footer{display:none!important}
+}
+@media(max-width:768px){
+    .header{padding:12px 16px}.header h1{font-size:1.1em}
+    .container{padding:14px 10px}.card{padding:14px 16px}
+}
+</style>
+</head>
+<body>
+
+<!-- NEWS_META: {"articles": 40, "countries": 8} -->
+<div class="header">
+    <h1>📰 国际涉华新闻日报</h1>
+    <div class="header-actions">
+        <a href="#" class="btn btn-nav" id="btnPrev" title="前一天">◀</a>
+        <select class="date-picker" id="datePicker"></select>
+        <a href="#" class="btn btn-nav" id="btnNext" title="后一天">▶</a>
+        <a href="./" class="btn btn-back" title="返回日期列表">📋</a>
+        <input type="text" class="search-box" id="searchBox" placeholder="🔍 搜索..." />
+        <select class="filter-select" id="countryFilter">
+            <option value="all">🌍 全部</option>
+        </select>
+        <button class="btn" id="themeToggle">🌙</button>
+    </div>
+</div>
+
+<div class="container">
+    <div class="summary-bar" id="summaryBar"></div>
+    <div class="no-results" id="noResults">😕 没有匹配的结果，试试换一个搜索词。</div>
+    <div id="articlesContainer"></div>
+</div>
+
+<div class="footer">
+    <p>🤖 由 GitHub Actions 自动生成 · 每日更新 · <a href="https://github.com/liuyin1082003/News-fetcher">查看源码</a></p>
+    <p style="margin-top:6px"><a href="./">📅 查看其他日期的报道</a></p>
+</div>
+
+<script>
+var DATA = [{"title": "FCC votes to ban all Chinese labs from testing US electronics", "link": "https://www.koreatimes.co.kr/world/20261030/fcc-votes-to-ban-all-chinese-labs-from-testing-us-electronics?utm_source=rss", "summary": "WASHINGTON — The Federal Communications Commission on Thursday voted to bar all Chinese labs from testing electronic devices including smartphones, cameras and computers for use in the US, expanding a previous agency action targeting Beijing. The FCC said it will prohibit test labs and certification", "published": "2026-10-29T18:17:02", "source": "Korea Times", "country": "韩国", "region": "东亚", "via": "RSS"}, {"title": "Hong Kong’s leader apologises for residential fire that killed 168 people", "link": "https://www.theguardian.com/world/2026/oct/29/hong-kong-john-lee-apologises-wang-fuk-court-fire-killed-168-people", "summary": "Blaze last year was deadliest housing fire globally since 1980 and some ex-residents and victims’ families say they still need justiceHong Kong’s leader has apologised for government shortcomings that contributed to a fire that killed 168 people in the city last year, a rare sign of public contritio", "published": "2026-10-29T18:14:21", "source": "The Guardian", "country": "英国", "region": "欧洲", "via": "RSS"}, {"title": "'Transgressions by China happen, it's not new': Arunachal CM says no intrusion along LAC", "link": "https://timesofindia.indiatimes.com/india/transgressions-by-china-happen-its-not-new-arunachal-cm-says-no-intrusion-along-lac/articleshow/135324392.cms", "summary": "Pema Khandu asserted that border transgressions along the India-China frontier have been a longstanding issue, highlighting China's non-recognition of the McMahon Line. He described the recent confrontations as transgressions instead of intrusions and reassured citizens of the state's stability. Lik", "published": "2026-10-29T17:07:02", "source": "Times of India", "country": "印度", "region": "南亚", "via": "RSS"}, {"title": "Harmanpreet, Sukhjeet score braces as India beat China 5-2 at Asian Champions Trophy", "link": "https://timesofindia.indiatimes.com/sports/hockey/top-stories/harmanpreet-sukhjeet-score-braces-as-india-beat-china-5-2-at-asian-champions-trophy/articleshow/135323193.cms", "summary": "In a thrilling encounter at the Olympian Surjit Singh Hockey Stadium, Captain Harmanpreet Singh and forward Sukhjeet Singh starred for India, netting two goals each in the match against China. India took an early lead with Sukhjeet scoring at the 13th minute. Despite two goals from China, they faile", "published": "2026-10-29T16:23:17", "source": "Times of India", "country": "印度", "region": "南亚", "via": "RSS"}, {"title": "China leaders demand more loyalty and more initiative", "link": "https://www.dw.com/en/china-leaders-demand-more-loyalty-and-more-initiative/a-79799138?maca=en-rss-en-all-1573-rdf", "summary": "The CCP session emphasized internal discipline — as expected, but left the question of 席's successor unanswered. The party seems anxious of any instability as geopolitics heats up and China's economy cools down.", "published": "2026-10-29T16:16:00", "source": "Deutsche Welle", "country": "德国", "region": "欧洲", "via": "RSS"}, {"title": "US and Japan agree to establish a Japanese facility for joint missile production", "link": "https://www.npr.org/2026/10/29/g-s1-150666/us-and-japan-agree-to-establish-a-japanese-facility-for-joint-missile-production", "summary": "The announcement Wednesday is the latest action by the allies, who have repeatedly expressed alarm over China's growing assertiveness in Asia.", "published": "2026-10-29T15:58:27", "source": "NPR", "country": "美国", "region": "北美", "via": "RSS"}, {"title": "China elevates a military general to the Politburo and seeks to strengthen party discipline", "link": "https://www.npr.org/2026/10/29/g-s1-150645/china-elevates-a-military-general-to-the-politburo-and-seeks-to-strengthen-party-discipline", "summary": "This move comes about a year before 席 is expected to secure his fourth five-year term.", "published": "2026-10-29T15:53:46", "source": "NPR", "country": "美国", "region": "北美", "via": "RSS"}, {"title": "Hongkong: Ministerin tritt nach Hochhausbrand zurück", "link": "https://www.spiegel.de/ausland/hongkong-ministerin-tritt-nach-hochhausbrand-zurueck-a-7e149c5b-bff5-4282-b7a4-c571112e75a3#ref=rss", "summary": "Beim verheerenden Brand eines Hochhauskomplexes in Hongkong starben 168 Menschen, Tausende wurden obdachlos. Eine Untersuchung sieht eine Mitverantwortung der Regierung. Nun hat die Wohnbauministerin ihr Amt niedergelegt.", "published": "2026-10-29T15:53:00", "source": "Der Spiegel", "country": "德国", "region": "欧洲", "via": "RSS"}, {"title": "US intelligence confirms image shows China's secret spaceplane in orbit", "link": "https://timesofindia.indiatimes.com/defence/international/us-intelligence-confirms-image-shows-chinas-secret-spaceplane-in-orbit-design-resembles-x-37b/articleshow/135322625.cms", "summary": "The US Defense Intelligence Agency has unveiled a detailed satellite image showcasing China's experimental reusable spaceplane currently in orbit. This vehicle exhibits design traits reminiscent of the US Space Force's X-37B, indicating active engagement in diverse orbital tasks. Following its recen", "published": "2026-10-29T15:50:14", "source": "Times of India", "country": "印度", "region": "南亚", "via": "RSS"}, {"title": "The rise of industrial tourism in China", "link": "https://www.thehindu.com/news/international/the-rise-of-industrial-tourism-in-china/article71469788.ece", "summary": "Industrial tours showcase showcase innovation and manufacturing prowess to instil national pride, while presenting STEM as a sustainable career option for the youth", "published": "2026-10-29T15:37:47", "source": "The Hindu", "country": "印度", "region": "南亚", "via": "RSS"}, {"title": "Nvidia CEO reportedly targeted by Chinese spy", "link": "https://www.theguardian.com/technology/2026/oct/29/nvidia-ceo-targeted-chinese-spy", "summary": "Jensen Huang reported to have had close relationship with tech company executive suspected of passing intel to ChinaUS intelligence agencies believe the Nvidia chief executive, Jensen Huang, has been targeted by a Chinese spy who had done business with him, according to a new report by the New York ", "published": "2026-10-29T15:23:48", "source": "The Guardian", "country": "英国", "region": "欧洲", "via": "RSS"}, {"title": "'Turn the blade inward': 席 swings the axe again, expels 33 in major CCP purge", "link": "https://timesofindia.indiatimes.com/world/china/turn-the-blade-inward-xi-swings-the-axe-again-expels-33-in-major-ccp-purge/articleshow/135319185.cms", "summary": "", "published": "2026-10-29T14:27:03", "source": "Times of India", "country": "印度", "region": "南亚", "via": "RSS"}, {"title": "Former factory worker is crowned China’s richest woman, again", "link": "https://www.straitstimes.com/asia/east-asia/former-factory-worker-is-crowned-chinas-richest-woman-again", "summary": "Lens Technology founder Zhou Qunfei reclaimed the title on the back of her foray into high-end manufacturing.", "published": "2026-10-29T14:00:00", "source": "Straits Times", "country": "新加坡", "region": "东南亚", "via": "RSS"}, {"title": "China's Communist Party conclave on toughening discipline sees record expulsions, absences", "link": "https://www.straitstimes.com/asia/chinas-communist-party-conclave-on-toughening-discipline-sees-record-expulsions-absences", "summary": "BEIJING, Oct 29 - A Chinese Communist Party conclave on toughening internal discipline this week formally expelled a record number of senior officials and logged the highest absence rate in its modern history as purges thinned its leadership ranks.", "published": "2026-10-29T13:51:18", "source": "Straits Times", "country": "新加坡", "region": "东南亚", "via": "RSS"}, {"title": "Can EU and India work together to secure Indo-Pacific?", "link": "https://www.dw.com/en/can-eu-and-india-work-together-to-secure-indo-pacific/a-79796195?maca=en-rss-en-all-1573-rdf", "summary": "India and Europe are deepening defense ties, but their clashing perspectives on Russia and differing priorities on China are hampering their joint ambitions on maritime security.", "published": "2026-10-29T13:26:00", "source": "Deutsche Welle", "country": "德国", "region": "欧洲", "via": "RSS"}, {"title": "Record number of purges as 席 emphasises 'party discipline' at China political gathering", "link": "https://www.bbc.co.uk/news/articles/cq5ynw94k7kzo?at_medium=RSS&at_campaign=rss", "summary": "席的 anti-corruption campaign has become \"an effort to consolidate and maintain authority\", observers say.", "published": "2026-10-29T12:49:17", "source": "BBC", "country": "英国", "region": "欧洲", "via": "RSS"}, {"title": "China’s Communist Party pledges tighter discipline ahead of 2027 congress", "link": "https://www.straitstimes.com/asia/chinas-communist-party-pledges-tighter-discipline-ahead-of-2027-congress", "summary": "The party adopted a resolution on self-governance and called for steps to root out corruption.", "published": "2026-10-29T12:00:00", "source": "Straits Times", "country": "新加坡", "region": "东南亚", "via": "RSS"}, {"title": "China cries foul as tensions with Manila flare at ASEAN defence talks", "link": "https://www.straitstimes.com/asia/se-asia/philippines-china-tensions-resurface-at-the-close-of-asean-defence-gathering", "summary": "Beijing hit at a “self-serving” politician it accused of obstructing its participation.", "published": "2026-10-29T11:49:36", "source": "Straits Times", "country": "新加坡", "region": "东南亚", "via": "RSS"}, {"title": "Hong Kong leader apologizes for deadly Tai Po fire, pledges reform", "link": "https://www.japantimes.co.jp/news/2026/10/29/asia-pacific/hong-kong-fire-apology/", "summary": "Lee promised swift but extensive reforms to the city's building industry and regulatory system.", "published": "2026-10-29T11:19:00", "source": "Japan Times", "country": "日本", "region": "东亚", "via": "RSS"}, {"title": "Toyota monthly sales fall as China slump enters eighth month", "link": "https://www.japantimes.co.jp/business/2026/10/29/toyota-monthly-sales-slump/", "summary": "China, the global auto industry's leading market, has proven difficult for the world's biggest carmaker.", "published": "2026-10-29T11:01:00", "source": "Japan Times", "country": "日本", "region": "东亚", "via": "RSS"}, {"title": "Who is to blame for Hong Kong's deadly 2025 fire?", "link": "https://www.straitstimes.com/asia/who-is-to-blame-for-hong-kongs-deadly-2025-fire", "summary": "HONG KONG, Oct 29 - An independent Hong Kong committee blamed a renovation contractor and consultant as well as four government departments for a deadly blaze that killed 168 people in the city last November, according to its report released to the public on Thursday.", "published": "2026-10-29T10:46:19", "source": "Straits Times", "country": "新加坡", "region": "东南亚", "via": "RSS"}, {"title": "(2nd LD) N.K. leader may have discussed potential talks with U.S. during China visit: spy agency", "link": "https://en.yna.co.kr/view/AEN20261029009052315", "summary": "SEOUL, Oct. 29 (Yonhap) -- North Korean leader Kim Jong-un may have conveyed Pyo...", "published": "2026-10-29T10:33:05", "source": "Yonhap", "country": "韩国", "region": "东亚", "via": "RSS"}, {"title": "Hong Kong's Housing Minister resigns after fire investigation finds inadequate oversight", "link": "https://www.thehindu.com/news/international/hong-kongs-housing-minister-resigns-after-fire-investigation-finds-inadequate-oversight/article71639735.ece", "summary": "During the investigation, an independent committee found that the Housing Bureau's independent checking unit failed in its duties supervising the maintenance work", "published": "2026-10-29T09:19:09", "source": "The Hindu", "country": "印度", "region": "南亚", "via": "RSS"}, {"title": "Nvidia Chief, Jensen Huang, Is Seen as Target of Chinese Spy Plot", "link": "https://www.nytimes.com/2026/10/29/us/politics/nvidia-china-jensen-huang-trump.html", "summary": "A Chinese businesswoman who had a close relationship with Jensen Huang was found to be passing intelligence to Beijing. President Trump was briefed and took no action.", "published": "2026-10-29T09:01:52", "source": "New York Times", "country": "美国", "region": "北美", "via": "RSS"}, {"title": "Taiwan says Pakistan briefly closed airspace to Taiwanese flights", "link": "https://www.japantimes.co.jp/news/2026/10/29/asia-pacific/taiwan-pakistan-airspace/", "summary": "The island suspects China of being behind the unprecedented move.", "published": "2026-10-29T08:06:00", "source": "Japan Times", "country": "日本", "region": "东亚", "via": "RSS"}, {"title": "Hello Kitty company cuts ties with Japanese spy show after China outcry", "link": "https://www.theguardian.com/world/2026/oct/29/hello-kitty-japanese-spy-show-vivant-china-outcry", "summary": "Sanrio ends association with TV drama Vivant after China says portrayal of ruthless Chinese agents is ‘deliberate smear’The company behind the successful Hello Kitty franchise has apologised and ended its commercial tie-up with a Japanese TV drama after Chinese state media and netizens condemned the", "published": "2026-10-29T08:03:00", "source": "The Guardian", "country": "英国", "region": "欧洲", "via": "RSS"}, {"title": "U.S. bans imports from Chinese genomics companies over forced labour concerns", "link": "https://www.thehindu.com/news/international/us-bans-chinese-genomics-imports-from-companies-forced-labour-concerns-alleged-detention-of-uyghurs-muslims-minorities/article71639437.ece", "summary": "According to the U.S. Homeland Security, the companies “helped collect genetic material used to track persecuted ethnic minorities, including people subjected to forced labour...”", "published": "2026-10-29T08:02:01", "source": "The Hindu", "country": "印度", "region": "南亚", "via": "RSS"}, {"title": "Hello Kitty maker cuts ties with Japanese spy drama after China backlash", "link": "https://www.bbc.co.uk/news/articles/cry4x177jlnyo?at_medium=RSS&at_campaign=rss", "summary": "Sanrio has apologised after its merchandise line with Japanese TV series Vivant drew criticism.", "published": "2026-10-29T07:54:33", "source": "BBC", "country": "英国", "region": "欧洲", "via": "RSS"}, {"title": "Poland pivots towards India as ‘strategic partnership’ with China develops cracks", "link": "https://www.thehindu.com/news/national/poland-pivots-towards-india-as-strategic-partnership-with-china-develops-cracks/article71636517.ece", "summary": "Poland and India seek to raise bilateral trade from $6 bn to $12 bn; PM Modi visited Poland in 2024, during which ties were elevated to ‘strategic partnership’; Warsaw is also trying to diversify partnerships as trade imbalance and Beijing’s support for Russia deepen disillusionment with China", "published": "2026-10-29T07:52:30", "source": "The Hindu", "country": "印度", "region": "南亚", "via": "RSS"}, {"title": "Sanrio ends ‘Vivant’ collaboration after protest by China’s state media", "link": "https://www.japantimes.co.jp/business/2026/10/29/companies/sanrio-china-vivant/", "summary": "A commentary in China's Global Times has accused the hit TBS drama series of vilifying the country.", "published": "2026-10-29T07:42:00", "source": "Japan Times", "country": "日本", "region": "东亚", "via": "RSS"}, {"title": "India ready to share 'battle-tested' anti-terror expertise with ASEAN, its dialogue partners: Rajnath Singh", "link": "https://www.thehindu.com/news/national/rajnath-singh-india-asean-defence-ministers-meeting-plus-conclave-philippines/article71639347.ece", "summary": "The Defence Minister flagged concerns over disruptions in certain maritime trade routes and asserted that India will continue to act as a \"trusted net security provider\" in the Indian Ocean region and the wider Indo-Pacific", "published": "2026-10-29T07:25:21", "source": "The Hindu", "country": "印度", "region": "南亚", "via": "RSS"}, {"title": "Hong Kong leader John Lee apologises for deadly Tai Po fire, pledges reforms", "link": "https://www.straitstimes.com/asia/east-asia/hong-kong-leader-john-lee-apologises-for-deadly-tai-po-fire", "summary": "He also announced the resignation of Hong Kong’s Housing Secretary Winnie Ho.", "published": "2026-10-29T07:15:00", "source": "Straits Times", "country": "新加坡", "region": "东南亚", "via": "RSS"}, {"title": "Company executives and Chinese national held over visa fraud", "link": "https://www.japantimes.co.jp/news/2026/10/29/japan/crime-legal/residency-fraud-rich-chinese/", "summary": "One of the executives is believed to have submitted fraudulent applications for visas for between 30 and 40 Chinese nationals beginning in 2020.", "published": "2026-10-29T06:24:00", "source": "Japan Times", "country": "日本", "region": "东亚", "via": "RSS"}, {"title": "Taiwan suspects China behind brief Pakistan airspace ban", "link": "https://www.straitstimes.com/asia/east-asia/taiwan-suspects-china-behind-brief-pakistan-airspace-ban", "summary": "The first Taiwanese commercial aircraft flew over Pakistan on Oct 29 following an abrupt U-turn by authorities to approve permits.", "published": "2026-10-29T06:07:00", "source": "Straits Times", "country": "新加坡", "region": "东南亚", "via": "RSS"}, {"title": "Hello Kitty maker Sanrio cuts ties with TV spy show after China backlash", "link": "https://www.straitstimes.com/asia/hello-kitty-maker-sanrio-cuts-ties-with-tv-spy-show-after-china-backlash", "summary": "TOKYO, Oct 29 - Hello Kitty maker Sanrio has cancelled a collaboration with a Japanese TV spy show after a backlash in China, the second incident in days to highlight the tightrope foreign firms and celebrities must walk in the lucrative market.", "published": "2026-10-29T05:01:12", "source": "Straits Times", "country": "新加坡", "region": "东南亚", "via": "RSS"}, {"title": "Hello Kitty owner Sanrio axes tie-up with Japanese drama Vivant after China furore", "link": "https://www.straitstimes.com/asia/east-asia/hello-kitty-owner-sanrio-axes-japan-show-ties-after-china-furore", "summary": "It ended its Vivant tie-up after Chinese criticism over the drama’s wartime history portrayal.", "published": "2026-10-29T04:15:00", "source": "Straits Times", "country": "新加坡", "region": "东南亚", "via": "RSS"}, {"title": "Chinese AI model carries out complex cyberattacks in controlled tests, researchers say", "link": "https://www.straitstimes.com/asia/east-asia/chinese-ai-model-carries-out-complex-cyberattacks-in-controlled-tests-researchers-say", "summary": "The findings underscore concerns that AI models are lowering the technical barriers to sophisticated cyberattacks.", "published": "2026-10-29T04:10:00", "source": "Straits Times", "country": "新加坡", "region": "东南亚", "via": "RSS"}, {"title": "US bans imports from 3 Chinese genomics companies, citing ties to forced labour in Xinjiang", "link": "https://www.straitstimes.com/asia/east-asia/us-bans-imports-from-3-chinese-genomics-companies-citing-ties-to-forced-labour-in-xinjiang", "summary": "The US government believes BGI Group tests genetic material of people from the Xinjiang region.", "published": "2026-10-29T02:48:00", "source": "Straits Times", "country": "新加坡", "region": "东南亚", "via": "RSS"}, {"title": "Pakistan makes U-turn on Taiwan airline ban – media", "link": "https://rt-english.com/news/647978-pakistan-airspace-taiwan-airlines/?utm_source=rss&utm_medium=rss&utm_campaign=RSS", "summary": " Pakistan has reportedly restored overflight rights to two Taiwanese airlines after restricting them under its One-China policy Read Full Article at RT.com", "published": "2026-10-29T00:41:26", "source": "RT", "country": "俄罗斯", "region": "东欧", "via": "RSS"}, {"title": "Hundreds of millions at risk from Chinese shopping app malware", "link": "https://cnn.it/40OSomK", "summary": "", "published": "", "source": "CNN", "country": "美国", "region": "北美", "via": "RSS"}];
+var DATE = '2026-10-30';
+var REPO = 'liuyin1082003/News-fetcher';
+var ALL_DATES = [{"date": "2026-10-30", "articles": 40, "countries": 8}, {"date": "2026-10-29", "articles": 23, "countries": 9}, {"date": "2026-10-28", "articles": 12, "countries": 5}, {"date": "2026-10-27", "articles": 17, "countries": 7}, {"date": "2026-10-26", "articles": 18, "countries": 8}, {"date": "2026-10-25", "articles": 32, "countries": 9}, {"date": "2026-10-24", "articles": 25, "countries": 9}, {"date": "2026-10-23", "articles": 20, "countries": 9}, {"date": "2026-10-22", "articles": 18, "countries": 7}, {"date": "2026-10-21", "articles": 22, "countries": 7}, {"date": "2026-10-20", "articles": 14, "countries": 6}, {"date": "2026-10-19", "articles": 12, "countries": 7}, {"date": "2026-10-18", "articles": 10, "countries": 8}, {"date": "2026-10-17", "articles": 21, "countries": 8}, {"date": "2026-10-16", "articles": 17, "countries": 9}, {"date": "2026-10-15", "articles": 25, "countries": 9}, {"date": "2026-10-14", "articles": 15, "countries": 7}, {"date": "2026-10-13", "articles": 14, "countries": 6}, {"date": "2026-10-12", "articles": 9, "countries": 6}, {"date": "2026-10-11", "articles": 19, "countries": 7}, {"date": "2026-10-10", "articles": 19, "countries": 8}, {"date": "2026-10-09", "articles": 16, "countries": 10}, {"date": "2026-10-08", "articles": 17, "countries": 9}, {"date": "2026-10-07", "articles": 13, "countries": 7}, {"date": "2026-10-06", "articles": 18, "countries": 8}, {"date": "2026-10-05", "articles": 14, "countries": 10}, {"date": "2026-10-04", "articles": 16, "countries": 7}, {"date": "2026-10-03", "articles": 19, "countries": 8}, {"date": "2026-10-02", "articles": 16, "countries": 6}, {"date": "2026-10-01", "articles": 23, "countries": 8}, {"date": "2026-09-30", "articles": 24, "countries": 8}, {"date": "2026-09-29", "articles": 21, "countries": 9}, {"date": "2026-09-28", "articles": 22, "countries": 9}, {"date": "2026-09-27", "articles": 26, "countries": 8}, {"date": "2026-09-26", "articles": 39, "countries": 12}, {"date": "2026-09-25", "articles": 57, "countries": 10}, {"date": "2026-09-24", "articles": 36, "countries": 8}, {"date": "2026-09-23", "articles": 32, "countries": 8}, {"date": "2026-09-22", "articles": 37, "countries": 9}, {"date": "2026-09-21", "articles": 19, "countries": 8}, {"date": "2026-09-20", "articles": 23, "countries": 9}, {"date": "2026-09-19", "articles": 19, "countries": 8}, {"date": "2026-09-18", "articles": 35, "countries": 10}, {"date": "2026-09-17", "articles": 20, "countries": 6}, {"date": "2026-09-16", "articles": 28, "countries": 11}, {"date": "2026-09-15", "articles": 24, "countries": 9}, {"date": "2026-09-14", "articles": 18, "countries": 7}, {"date": "2026-09-13", "articles": 30, "countries": 11}, {"date": "2026-09-12", "articles": 22, "countries": 8}, {"date": "2026-09-11", "articles": 23, "countries": 10}, {"date": "2026-09-10", "articles": 14, "countries": 7}, {"date": "2026-09-09", "articles": 20, "countries": 8}, {"date": "2026-09-08", "articles": 15, "countries": 6}, {"date": "2026-09-07", "articles": 20, "countries": 8}, {"date": "2026-09-06", "articles": 22, "countries": 11}, {"date": "2026-09-05", "articles": 21, "countries": 10}, {"date": "2026-09-04", "articles": 27, "countries": 11}, {"date": "2026-09-03", "articles": 24, "countries": 9}, {"date": "2026-09-02", "articles": 31, "countries": 11}, {"date": "2026-09-01", "articles": 38, "countries": 12}, {"date": "2026-08-31", "articles": 34, "countries": 11}, {"date": "2026-08-30", "articles": 37, "countries": 9}, {"date": "2026-08-29", "articles": 56, "countries": 11}, {"date": "2026-08-28", "articles": 51, "countries": 11}, {"date": "2026-08-27", "articles": 54, "countries": 10}, {"date": "2026-08-26", "articles": 42, "countries": 11}, {"date": "2026-08-25", "articles": 29, "countries": 10}, {"date": "2026-08-24", "articles": 25, "countries": 10}, {"date": "2026-08-23", "articles": 12, "countries": 7}, {"date": "2026-08-22", "articles": 38, "countries": 10}, {"date": "2026-08-21", "articles": 31, "countries": 11}, {"date": "2026-08-20", "articles": 29, "countries": 9}, {"date": "2026-08-19", "articles": 17, "countries": 8}, {"date": "2026-08-18", "articles": 17, "countries": 9}, {"date": "2026-08-17", "articles": 5, "countries": 5}, {"date": "2026-08-16", "articles": 16, "countries": 7}, {"date": "2026-08-15", "articles": 29, "countries": 8}, {"date": "2026-08-14", "articles": 29, "countries": 10}, {"date": "2026-08-13", "articles": 29, "countries": 8}, {"date": "2026-08-12", "articles": 17, "countries": 8}, {"date": "2026-08-11", "articles": 28, "countries": 9}, {"date": "2026-08-10", "articles": 26, "countries": 7}, {"date": "2026-08-09", "articles": 28, "countries": 10}, {"date": "2026-08-08", "articles": 17, "countries": 7}, {"date": "2026-08-07", "articles": 23, "countries": 8}, {"date": "2026-08-06", "articles": 19, "countries": 8}, {"date": "2026-08-05", "articles": 16, "countries": 8}, {"date": "2026-08-04", "articles": 11, "countries": 6}, {"date": "2026-08-03", "articles": 16, "countries": 6}, {"date": "2026-08-02", "articles": 10, "countries": 6}, {"date": "2026-08-01", "articles": 21, "countries": 8}, {"date": "2026-07-31", "articles": 25, "countries": 8}, {"date": "2026-07-30", "articles": 24, "countries": 8}, {"date": "2026-07-29", "articles": 20, "countries": 7}, {"date": "2026-07-28", "articles": 23, "countries": 7}, {"date": "2026-07-27", "articles": 19, "countries": 7}, {"date": "2026-07-26", "articles": 12, "countries": 5}, {"date": "2026-07-25", "articles": 22, "countries": 7}, {"date": "2026-07-24", "articles": 25, "countries": 8}, {"date": "2026-07-23", "articles": 20, "countries": 8}, {"date": "2026-07-22", "articles": 27, "countries": 8}, {"date": "2026-07-21", "articles": 26, "countries": 7}, {"date": "2026-07-20", "articles": 18, "countries": 8}, {"date": "2026-07-19", "articles": 15, "countries": 7}, {"date": "2026-07-18", "articles": 35, "countries": 10}, {"date": "2026-07-17", "articles": 25, "countries": 7}, {"date": "2026-07-16", "articles": 25, "countries": 7}, {"date": "2026-07-15", "articles": 12, "countries": 8}, {"date": "2026-07-14", "articles": 16, "countries": 7}, {"date": "2026-07-13", "articles": 20, "countries": 7}, {"date": "2026-07-12", "articles": 29, "countries": 11}, {"date": "2026-07-11", "articles": 39, "countries": 10}, {"date": "2026-07-10", "articles": 31, "countries": 9}, {"date": "2026-07-09", "articles": 19, "countries": 6}, {"date": "2026-07-08", "articles": 29, "countries": 10}, {"date": "2026-07-07", "articles": 35, "countries": 8}, {"date": "2026-07-06", "articles": 24, "countries": 9}, {"date": "2026-07-05", "articles": 13, "countries": 4}, {"date": "2026-07-04", "articles": 20, "countries": 8}, {"date": "2026-07-03", "articles": 23, "countries": 11}, {"date": "2026-07-02", "articles": 20, "countries": 7}, {"date": "2026-07-01", "articles": 24, "countries": 7}, {"date": "2026-06-30", "articles": 25, "countries": 7}, {"date": "2026-06-29", "articles": 10, "countries": 7}, {"date": "2026-06-28", "articles": 27, "countries": 10}, {"date": "2026-06-27", "articles": 33, "countries": 10}, {"date": "2026-06-26", "articles": 23, "countries": 7}, {"date": "2026-06-25", "articles": 21, "countries": 7}, {"date": "2026-06-24", "articles": 24, "countries": 9}, {"date": "2026-06-23", "articles": 24, "countries": 10}, {"date": "2026-06-22", "articles": 8, "countries": 6}, {"date": "2026-06-21", "articles": 13, "countries": 9}, {"date": "2026-06-20", "articles": 10, "countries": 7}, {"date": "2026-06-19", "articles": 19, "countries": 10}, {"date": "2026-06-18", "articles": 25, "countries": 8}, {"date": "2026-06-17", "articles": 17, "countries": 7}, {"date": "2026-06-16", "articles": 24, "countries": 7}, {"date": "2026-06-15", "articles": 22, "countries": 6}, {"date": "2026-06-14", "articles": 12, "countries": 8}, {"date": "2026-06-13", "articles": 12, "countries": 7}, {"date": "2026-06-12", "articles": 20, "countries": 8}, {"date": "2026-06-11", "articles": 25, "countries": 7}];
+
+function escapeHtml(text) {
+    if(!text)return'';
+    var d=document.createElement('div');d.textContent=text;return d.innerHTML;
+}
+
+function render() {
+    if(!DATA.length){
+        document.getElementById('summaryBar').innerHTML='<span>⚠️ 今日未抓到涉华新闻，请稍后再试</span>';
+        return;
+    }
+
+    var countries=[...new Set(DATA.map(function(a){return a.country||'未知'}))];
+    document.getElementById('summaryBar').innerHTML=
+        '<span>📅 <strong>'+DATE+'</strong></span>'+
+        '<span>📰 <strong>'+DATA.length+'</strong> 篇</span>'+
+        '<span>🌍 <strong>'+countries.length+'</strong> 个国家/地区</span>'+
+        '<span>🔗 来源: RSS + Google News</span>';
+
+    var sel=document.getElementById('countryFilter');
+    sel.innerHTML='<option value="all">🌍 全部 ('+DATA.length+')</option>';
+    countries.forEach(function(c){
+        var n=DATA.filter(function(a){return a.country===c}).length;
+        sel.innerHTML+='<option value="'+escapeHtml(c)+'">'+escapeHtml(c)+' ('+n+')</option>';
+    });
+
+    var grouped={};
+    DATA.forEach(function(a){
+        var k=a.country||'未知';
+        if(!grouped[k])grouped[k]=[];
+        grouped[k].push(a);
+    });
+
+    var h='';
+    for(var c in grouped){
+        var arts=grouped[c];
+        h+='<div class="country-group"><div class="country-header">'+escapeHtml(c)+'<span class="count">'+arts.length+' 篇</span></div>';
+        arts.forEach(function(a){
+            var txt=(a.title+' '+a.summary).toLowerCase();
+            h+='<div class="card" data-country="'+escapeHtml(c)+'" data-search="'+escapeHtml(txt)+'">';
+            h+='<div class="card-title"><a href="'+escapeHtml(a.link||'#')+'" target="_blank" rel="noopener">'+escapeHtml(a.title)+'</a></div>';
+            h+='<div class="card-meta">';
+            h+='<span class="tag tag-source">'+escapeHtml(a.source||c)+'</span>';
+            if(a.via)h+='<span class="tag tag-via">'+escapeHtml(a.via)+'</span>';
+            h+='</div>';
+            if(a.summary)h+='<div class="card-summary">'+escapeHtml(a.summary)+'</div>';
+            h+='<div class="card-link"><a href="'+escapeHtml(a.link||'#')+'" target="_blank" rel="noopener">阅读原文 →</a></div>';
+            h+='</div>';
+        });
+        h+='</div>';
+    }
+    document.getElementById('articlesContainer').innerHTML=h;
+}
+
+function filter() {
+    var t=(document.getElementById('searchBox').value||'').toLowerCase().trim();
+    var c=document.getElementById('countryFilter').value;
+    var vis=false;
+    document.querySelectorAll('.card').forEach(function(card){
+        var ok=true;
+        if(c!=='all'&&card.dataset.country!==c)ok=false;
+        if(t&&ok&&(card.dataset.search||'').indexOf(t)===-1)ok=false;
+        card.style.display=ok?'':'none';
+        if(ok)vis=true;
+    });
+    document.querySelectorAll('.country-group').forEach(function(g){
+        var v=g.querySelectorAll('.card:not([style*="display: none"])').length;
+        g.style.display=v>0?'':'none';
+    });
+    document.getElementById('noResults').style.display=vis?'none':'block';
+}
+
+document.addEventListener('DOMContentLoaded',function(){
+    try{if(localStorage.getItem('nt')==='dark'){document.documentElement.setAttribute('data-theme','dark');document.getElementById('themeToggle').textContent='☀️'}}catch(e){}
+    render();
+    initDateNav();
+    document.getElementById('themeToggle').addEventListener('click',function(){
+        var n=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';
+        document.documentElement.setAttribute('data-theme',n);
+        this.textContent=n==='dark'?'☀️':'🌙';
+        try{localStorage.setItem('nt',n)}catch(e){}
+    });
+    var t;document.getElementById('searchBox').addEventListener('input',function(){clearTimeout(t);t=setTimeout(filter,250)});
+    document.getElementById('countryFilter').addEventListener('change',filter);
+    document.addEventListener('keydown',function(e){
+        if((e.ctrlKey||e.metaKey)&&e.key==='k'){e.preventDefault();document.getElementById('searchBox').focus()}
+        if((e.ctrlKey||e.metaKey)&&e.key==='d'&&!e.shiftKey){e.preventDefault();document.getElementById('themeToggle').click()}
+    });
+    console.log('📰 '+DATA.length+' 篇新闻');
+});
+
+function initDateNav(){
+    if(!ALL_DATES||!ALL_DATES.length)return;
+    // 找到当天在所有日期中的索引
+    var curIdx=-1;
+    for(var i=0;i<ALL_DATES.length;i++){if(ALL_DATES[i].date===DATE){curIdx=i;break;}}
+
+    // 填充日期下拉框
+    var sel=document.getElementById('datePicker');
+    ALL_DATES.forEach(function(d){
+        var opt=document.createElement('option');
+        opt.value=d.date;
+        // 显示格式: "6月12日 · 16篇 · 8国"
+        var parts=d.date.split('-');
+        var label=parseInt(parts[1])+'月'+parseInt(parts[2])+'日 · '+d.articles+'篇 · '+d.countries+'国';
+        if(d.date===DATE)label='📍 '+label;
+        opt.textContent=label;
+        if(d.date===DATE)opt.selected=true;
+        sel.appendChild(opt);
+    });
+    sel.addEventListener('change',function(){
+        var v=this.value;
+        if(v!==DATE)window.location.href='news_'+v+'.html';
+    });
+
+    // 前后天按钮
+    var btnPrev=document.getElementById('btnPrev');
+    var btnNext=document.getElementById('btnNext');
+    if(curIdx<=0)btnPrev.classList.add('disabled');
+    else btnPrev.addEventListener('click',function(e){e.preventDefault();if(curIdx>0)window.location.href='news_'+ALL_DATES[curIdx-1].date+'.html';});
+    if(curIdx>=ALL_DATES.length-1)btnNext.classList.add('disabled');
+    else btnNext.addEventListener('click',function(e){e.preventDefault();if(curIdx<ALL_DATES.length-1)window.location.href='news_'+ALL_DATES[curIdx+1].date+'.html';});
+
+    // 键盘左右箭头翻页
+    document.addEventListener('keydown',function(e){
+        if(e.target.tagName==='INPUT'||e.target.tagName==='SELECT')return;
+        if(e.key==='ArrowLeft'&&curIdx>0)window.location.href='news_'+ALL_DATES[curIdx-1].date+'.html';
+        if(e.key==='ArrowRight'&&curIdx<ALL_DATES.length-1)window.location.href='news_'+ALL_DATES[curIdx+1].date+'.html';
+    });
+}
+</script>
+</body>
+</html>
