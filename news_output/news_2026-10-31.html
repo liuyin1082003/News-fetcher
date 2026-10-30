@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>国际涉华新闻日报 - 2026-10-31</title>
+<style>
+:root{
+    --bg:#f5f5f5;--card-bg:#fff;--text:#333;--text2:#666;--border:#e0e0e0;
+    --accent:#1a73e8;--accent-lt:#e8f0fe;--tag-bg:#e8f0fe;--tag-text:#1a73e8;
+    --highlight:#ffeb3b;--shadow:0 2px 8px rgba(0,0,0,.08);--hdr-bg:#1a1a2e;--hdr-text:#fff
+}
+[data-theme="dark"]{
+    --bg:#1a1a2e;--card-bg:#16213e;--text:#e0e0e0;--text2:#a0a0a0;--border:#2a2a4a;
+    --accent:#64b5f6;--accent-lt:#1e3a5f;--tag-bg:#1e3a5f;--tag-text:#64b5f6;
+    --highlight:#5c5200;--shadow:0 2px 8px rgba(0,0,0,.3);--hdr-bg:#0d0d1a
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);line-height:1.7;transition:background .3s,color .3s;min-height:100vh}
+.header{background:var(--hdr-bg);color:var(--hdr-text);padding:16px 32px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,.2)}
+.header h1{font-size:1.4em;font-weight:700}
+.header-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.btn{padding:8px 16px;border:1px solid var(--border);border-radius:6px;cursor:pointer;font-size:14px;background:var(--card-bg);color:var(--text);transition:all .2s;white-space:nowrap;text-decoration:none}
+.btn:hover{border-color:var(--accent);color:var(--accent)}
+.btn-nav{padding:8px 12px;border:1px solid var(--border);border-radius:6px;cursor:pointer;font-size:14px;background:var(--card-bg);color:var(--text);transition:all .2s;white-space:nowrap;text-decoration:none;font-weight:700}
+.btn-nav:hover{border-color:var(--accent);color:var(--accent)}
+.btn-nav.disabled{opacity:.3;pointer-events:none;cursor:default}
+.btn-back{border-color:var(--accent);color:var(--accent);font-weight:500}
+.date-picker{padding:8px 12px;border:1px solid var(--border);border-radius:6px;font-size:14px;background:var(--card-bg);color:var(--text);cursor:pointer;min-width:170px;font-weight:600;transition:border-color .2s}
+.date-picker:focus{outline:none;border-color:var(--accent)}
+.search-box{padding:8px 14px;border:1px solid var(--border);border-radius:6px;font-size:14px;background:var(--card-bg);color:var(--text);width:180px;transition:border-color .2s}
+.search-box:focus{outline:none;border-color:var(--accent)}
+.filter-select{padding:8px 12px;border:1px solid var(--border);border-radius:6px;font-size:14px;background:var(--card-bg);color:var(--text);cursor:pointer}
+.container{max-width:1000px;margin:0 auto;padding:24px 20px}
+.summary-bar{background:var(--card-bg);border:1px solid var(--border);border-radius:10px;padding:14px 24px;margin-bottom:20px;display:flex;gap:24px;flex-wrap:wrap;font-size:14px;color:var(--text2);box-shadow:var(--shadow)}
+.summary-bar strong{color:var(--accent);font-size:1.1em}
+.no-results{text-align:center;padding:40px;color:var(--text2);font-size:16px;display:none}
+.country-group{margin-bottom:28px}
+.country-header{font-size:1.2em;font-weight:700;margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid var(--accent);color:var(--accent);display:flex;align-items:center;gap:8px}
+.country-header .count{font-size:.8em;font-weight:400;color:var(--text2);margin-left:auto}
+.card{background:var(--card-bg);border:1px solid var(--border);border-radius:10px;padding:18px 22px;margin-bottom:14px;box-shadow:var(--shadow);transition:transform .2s,box-shadow .2s}
+.card:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,.12)}
+.card-title{font-size:1.05em;font-weight:600;margin-bottom:8px}
+.card-title a{color:var(--text);text-decoration:none}
+.card-title a:hover{color:var(--accent)}
+.card-meta{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-bottom:8px}
+.tag{display:inline-block;padding:2px 10px;border-radius:12px;font-size:12px;font-weight:500;white-space:nowrap}
+.tag-source{background:var(--accent-lt);color:var(--tag-text)}
+.tag-via{background:#fff3e0;color:#e65100}
+[data-theme="dark"] .tag-via{background:#3d2600;color:#ffb74d}
+.card-summary{font-size:14px;color:var(--text2);line-height:1.6;margin-bottom:4px}
+.card-link{font-size:13px}
+.card-link a{color:var(--accent);text-decoration:none}
+.card-link a:hover{text-decoration:underline}
+mark{background:var(--highlight);color:inherit;padding:1px 3px;border-radius:2px}
+.footer{text-align:center;padding:30px;color:var(--text2);font-size:13px;border-top:1px solid var(--border);margin-top:30px}
+.footer a{color:var(--accent)}
+@media print{
+    .header{position:static;background:#fff!important;color:#000!important;box-shadow:none}
+    .card{break-inside:avoid;box-shadow:none}
+    .btn,.search-box,.filter-select,.footer{display:none!important}
+}
+@media(max-width:768px){
+    .header{padding:12px 16px}.header h1{font-size:1.1em}
+    .container{padding:14px 10px}.card{padding:14px 16px}
+}
+</style>
+</head>
+<body>
+
+<!-- NEWS_META: {"articles": 23, "countries": 6} -->
+<div class="header">
+    <h1>📰 国际涉华新闻日报</h1>
+    <div class="header-actions">
+        <a href="#" class="btn btn-nav" id="btnPrev" title="前一天">◀</a>
+        <select class="date-picker" id="datePicker"></select>
+        <a href="#" class="btn btn-nav" id="btnNext" title="后一天">▶</a>
+        <a href="./" class="btn btn-back" title="返回日期列表">📋</a>
+        <input type="text" class="search-box" id="searchBox" placeholder="🔍 搜索..." />
+        <select class="filter-select" id="countryFilter">
+            <option value="all">🌍 全部</option>
+        </select>
+        <button class="btn" id="themeToggle">🌙</button>
+    </div>
+</div>
+
+<div class="container">
+    <div class="summary-bar" id="summaryBar"></div>
+    <div class="no-results" id="noResults">😕 没有匹配的结果，试试换一个搜索词。</div>
+    <div id="articlesContainer"></div>
+</div>
+
+<div class="footer">
+    <p>🤖 由 GitHub Actions 自动生成 · 每日更新 · <a href="https://github.com/liuyin1082003/News-fetcher">查看源码</a></p>
+    <p style="margin-top:6px"><a href="./">📅 查看其他日期的报道</a></p>
+</div>
+
+<script>
+var DATA = [{"title": "Google loses $500bn as China suffers worst rout since 2016: What's happening?", "link": "https://timesofindia.indiatimes.com/business/international-business/google-loses-500bn-as-china-stocks-suffer-worst-rout-since-2016-whats-happening-to-global-ai/articleshow/135369988.cms", "summary": "", "published": "2026-10-30T17:08:17", "source": "Times of India", "country": "印度", "region": "南亚", "via": "RSS"}, {"title": "I Covered the Tiananmen Square Massacre. It Still Weighs on Me.", "link": "https://www.nytimes.com/2026/10/30/world/asia/china-tiananmen-kristof.html", "summary": "The day that changed modern China also taught me how to recognize true courage.", "published": "2026-10-30T17:07:18", "source": "New York Times", "country": "美国", "region": "北美", "via": "RSS"}, {"title": "China denies spying on Nvidia's Jensen Huang", "link": "https://www.thehindu.com/news/international/china-denies-spying-on-nvidias-jensen-huang/article71646557.ece", "summary": "China is in a race for tech dominance with the United States, which restricts the export to China of the most cutting-edge silicon chips, designed by industry leader Nvidia and used to train and run AI models", "published": "2026-10-30T17:00:37", "source": "The Hindu", "country": "印度", "region": "南亚", "via": "RSS"}, {"title": "China ruling party says 'eliminated dangers' after 33 expelled", "link": "https://www.thehindu.com/news/international/china-ruling-party-says-eliminated-dangers-after-33-expelled/article71646495.ece", "summary": "In more than a decade in charge, 席 has cracked down hard on graft, ensnaring thousands of officials and purging dozens of members of the powerful Central Committee and a string of top military brass", "published": "2026-10-30T16:35:10", "source": "The Hindu", "country": "印度", "region": "南亚", "via": "RSS"}, {"title": "China says stealth attack drone makes first takeoff, landing on amphibious ship", "link": "https://www.straitstimes.com/asia/china-says-stealth-attack-drone-makes-first-takeoff-landing-on-amphibious-ship", "summary": "BEIJING, Oct 30 - China's first carrier-based stealth reconnaissance and strike drone, the GJ-21, recently completed its first takeoff and landing on the Sichuan, the country's first Type 076 amphibious assault ship, state news agency Xinhua reported on Friday.", "published": "2026-10-30T15:51:28", "source": "Straits Times", "country": "新加坡", "region": "东南亚", "via": "RSS"}, {"title": "Germany news: Merz hopes for Korean reunification at DMZ", "link": "https://www.dw.com/en/germany-news-merz-hopes-for-korean-reunification-at-dmz/live-79803462?maca=en-rss-en-all-1573-rdf", "summary": "Chancellor Friedrich Merz has expressed hope for Korean reunification during a visit to the heavily fortified border. Meanwhile, President Steinmeier has held talks with China's 席 in Beijing. DW has more.", "published": "2026-10-30T14:46:00", "source": "Deutsche Welle", "country": "德国", "region": "欧洲", "via": "RSS"}, {"title": "Mosquito Lasers", "link": "https://www.nytimes.com/2026/10/30/briefing/mosquito-lasers.html", "summary": "China has come up with an innovative way to kill the insects.", "published": "2026-10-30T14:21:52", "source": "New York Times", "country": "美国", "region": "北美", "via": "RSS"}, {"title": "China mourns an ‘old friend’ in ex-PM Yasuo Fukuda, with Japan’s foreign policy at a crossroads", "link": "https://www.straitstimes.com/asia/east-asia/china-mourns-an-old-friend-in-ex-pm-yasuo-fukuda-with-japans-foreign-policy-at-a-crossroads", "summary": "His death has laid bare a sharp dilemma for Japanese state craft.", "published": "2026-10-30T12:56:00", "source": "Straits Times", "country": "新加坡", "region": "东南亚", "via": "RSS"}, {"title": "China denies allegations of spy operation targeting Nvidia CEO", "link": "https://www.bbc.co.uk/news/articles/ckgj9plnlxdeo?at_medium=RSS&at_campaign=rss", "summary": "US intelligence officials believe a Chinese businesswoman was gathering information for Beijing on the US chip-making giant, The New York Times reports.", "published": "2026-10-30T12:20:04", "source": "BBC", "country": "英国", "region": "欧洲", "via": "RSS"}, {"title": "Dravid, Sehwag named in India squad for U19 Asia Cup", "link": "https://timesofindia.indiatimes.com/sports/cricket/news/anvay-dravid-aaryavir-sehwag-named-in-india-squad-for-u19-asia-cup/articleshow/135359865.cms", "summary": "Anvay Dravid and Aaryavir Sehwag have been named in India's squad for the upcoming ACC Men's U19 Asia Cup. The tournament will be held in Muscat, Oman, from November 5 to 14. The 17-year-old Anvay and 19-year-old Aaryavir earned their places after impressive performances in the recently concluded Vi", "published": "2026-10-30T11:49:45", "source": "Times of India", "country": "印度", "region": "南亚", "via": "RSS"}, {"title": "Hong Kong fire exposes entrenched triad networks in building renovation industry", "link": "https://www.straitstimes.com/asia/hong-kong-fire-exposes-entrenched-triad-networks-in-building-renovation-industry", "summary": "Organised crime groups were mentioned more than 40 times in the report on the Wang Fuk Court inferno.", "published": "2026-10-30T11:16:35", "source": "Straits Times", "country": "新加坡", "region": "东南亚", "via": "RSS"}, {"title": "Beijing Queer film festival cancelled after harassment from authorities", "link": "https://www.theguardian.com/world/2026/oct/30/beijing-queer-film-festival-cancelled-after-police-harassment", "summary": "Forums for discussion of feminist and LGBTQ+ views face growing intolerance from Chinese state, say expertsBeijing’s annual independent queer film festival has been cancelled after what is understood to have been a campaign of sustained harassment from authorities.Beijing Queer film festival, which ", "published": "2026-10-30T11:04:12", "source": "The Guardian", "country": "英国", "region": "欧洲", "via": "RSS"}, {"title": "China, Germany should uphold international order, presidents say", "link": "https://www.straitstimes.com/asia/china-germany-should-uphold-international-order-presidents-say", "summary": "BEIJING, Oct 30 - German President Frank-Walter Steinmeier stressed the need for China to help preserve the international order during talks with 席 in Beijing on Friday, where 席 called on both countries to help forge a more equitable and stable system of global governance.", "published": "2026-10-30T10:52:16", "source": "Straits Times", "country": "新加坡", "region": "东南亚", "via": "RSS"}, {"title": "Is Hong Kong really over? And why Beijing should beware a Trump deal", "link": "https://www.straitstimes.com/asia/is-hong-kong-really-over", "summary": "Or has US economist Stephen Roach changed his mind about Hong Kong’s survival and identity?", "published": "2026-10-30T10:00:00", "source": "Straits Times", "country": "新加坡", "region": "东南亚", "via": "RSS"}, {"title": "China's 席, Swiss president praise trade deal that boosts access", "link": "https://www.straitstimes.com/asia/chinas-xi-swiss-president-praise-trade-deal-that-boosts-access", "summary": "BEIJING, Oct 30 - Chinese 席 Jinping and Swiss President Guy Parmelin hailed an upgraded trade agreement between the two countries on Friday, which bucks a broader global shift towards protectionism.", "published": "2026-10-30T09:41:18", "source": "Straits Times", "country": "新加坡", "region": "东南亚", "via": "RSS"}, {"title": "Philippines’ China hawk defence chief open to 2028 presidential showdown with V-P Duterte", "link": "https://www.straitstimes.com/asia/se-asia/philippines-china-hawk-defence-chief-open-to-2028-presidential-showdown-with-v-p-duterte", "summary": "Gilbert Teodoro has been among the most vocal critics of China’s military build-up in the South China Sea.", "published": "2026-10-30T08:55:40", "source": "Straits Times", "country": "新加坡", "region": "东南亚", "via": "RSS"}, {"title": "‘Arrested Memory’ filmmaker Sabu likes to stay on his toes", "link": "https://www.japantimes.co.jp/culture/2026/10/30/film/sabu-arrested-memory/", "summary": "Shot entirely in Taiwan, \"Arrested Memory\" is the latest in a string of international productions helmed by the idiosyncratic filmmaker.", "published": "2026-10-30T08:50:00", "source": "Japan Times", "country": "日本", "region": "东亚", "via": "RSS"}, {"title": "With China in mind, Japan eyes more realistic joint military exercises", "link": "https://www.japantimes.co.jp/news/2026/10/30/japan/us-japan-joint-military-exercise/", "summary": "Defense Minister Shinjiro Koizumi and U.S. Defense Secretary Pete Hegseth made the commitment at a bilateral meeting this week.", "published": "2026-10-30T07:42:00", "source": "Japan Times", "country": "日本", "region": "东亚", "via": "RSS"}, {"title": "Koizumi vows to uphold ‘defense-oriented’ policy at ASEAN meet", "link": "https://www.japantimes.co.jp/news/2026/10/30/japan/koizumi-exclusively-defense-oriented-policy-japan-china/", "summary": "The pledge comes as China continues to accuse Japan of \"accelerated remilitarization.\"", "published": "2026-10-30T04:42:00", "source": "Japan Times", "country": "日本", "region": "东亚", "via": "RSS"}, {"title": "Record number of purges as 席 emphasises 'party discipline' at China political gathering", "link": "https://www.bbc.co.uk/news/articles/cq5ynw94k7kzo?at_medium=RSS&at_campaign=rss", "summary": "席的 anti-corruption campaign has become \"an effort to consolidate and maintain authority\", observers say.", "published": "2026-10-30T03:24:12", "source": "BBC", "country": "英国", "region": "欧洲", "via": "RSS"}, {"title": "China expels a record number from Communist party amid 席’s intensified purges of top officials", "link": "https://www.theguardian.com/world/2026/oct/30/china-expels-record-number-communist-party-xi-jinping-purges-officials-fifth-plenum", "summary": "The unprecedented number of empty seats at the fifth plenum – a symbol of expulsions – serve as a symbol for the scale of the purges under 席China expelled a record number of officials from the Chinese Communist party (CCP) as it concluded a major political gathering, which saw an unpreceden", "published": "2026-10-30T02:56:46", "source": "The Guardian", "country": "英国", "region": "欧洲", "via": "RSS"}, {"title": "Hong Kong’s leader apologises for residential fire that killed 168 people", "link": "https://www.theguardian.com/world/2026/oct/29/hong-kong-john-lee-apologises-wang-fuk-court-fire-killed-168-people", "summary": "Blaze was world’s deadliest residential fire since 1980, but some survivors and bereaved families say justice has yet to be servedHong Kong’s leader has apologised for government shortcomings that contributed to a fire that killed 168 people in the city last year, a rare sign of public contrition th", "published": "2026-10-29T18:14:21", "source": "The Guardian", "country": "英国", "region": "欧洲", "via": "RSS"}, {"title": "Hundreds of millions at risk from Chinese shopping app malware", "link": "https://cnn.it/40OSomK", "summary": "", "published": "", "source": "CNN", "country": "美国", "region": "北美", "via": "RSS"}];
+var DATE = '2026-10-31';
+var REPO = 'liuyin1082003/News-fetcher';
+var ALL_DATES = [{"date": "2026-10-31", "articles": 23, "countries": 6}, {"date": "2026-10-30", "articles": 40, "countries": 8}, {"date": "2026-10-29", "articles": 23, "countries": 9}, {"date": "2026-10-28", "articles": 12, "countries": 5}, {"date": "2026-10-27", "articles": 17, "countries": 7}, {"date": "2026-10-26", "articles": 18, "countries": 8}, {"date": "2026-10-25", "articles": 32, "countries": 9}, {"date": "2026-10-24", "articles": 25, "countries": 9}, {"date": "2026-10-23", "articles": 20, "countries": 9}, {"date": "2026-10-22", "articles": 18, "countries": 7}, {"date": "2026-10-21", "articles": 22, "countries": 7}, {"date": "2026-10-20", "articles": 14, "countries": 6}, {"date": "2026-10-19", "articles": 12, "countries": 7}, {"date": "2026-10-18", "articles": 10, "countries": 8}, {"date": "2026-10-17", "articles": 21, "countries": 8}, {"date": "2026-10-16", "articles": 17, "countries": 9}, {"date": "2026-10-15", "articles": 25, "countries": 9}, {"date": "2026-10-14", "articles": 15, "countries": 7}, {"date": "2026-10-13", "articles": 14, "countries": 6}, {"date": "2026-10-12", "articles": 9, "countries": 6}, {"date": "2026-10-11", "articles": 19, "countries": 7}, {"date": "2026-10-10", "articles": 19, "countries": 8}, {"date": "2026-10-09", "articles": 16, "countries": 10}, {"date": "2026-10-08", "articles": 17, "countries": 9}, {"date": "2026-10-07", "articles": 13, "countries": 7}, {"date": "2026-10-06", "articles": 18, "countries": 8}, {"date": "2026-10-05", "articles": 14, "countries": 10}, {"date": "2026-10-04", "articles": 16, "countries": 7}, {"date": "2026-10-03", "articles": 19, "countries": 8}, {"date": "2026-10-02", "articles": 16, "countries": 6}, {"date": "2026-10-01", "articles": 23, "countries": 8}, {"date": "2026-09-30", "articles": 24, "countries": 8}, {"date": "2026-09-29", "articles": 21, "countries": 9}, {"date": "2026-09-28", "articles": 22, "countries": 9}, {"date": "2026-09-27", "articles": 26, "countries": 8}, {"date": "2026-09-26", "articles": 39, "countries": 12}, {"date": "2026-09-25", "articles": 57, "countries": 10}, {"date": "2026-09-24", "articles": 36, "countries": 8}, {"date": "2026-09-23", "articles": 32, "countries": 8}, {"date": "2026-09-22", "articles": 37, "countries": 9}, {"date": "2026-09-21", "articles": 19, "countries": 8}, {"date": "2026-09-20", "articles": 23, "countries": 9}, {"date": "2026-09-19", "articles": 19, "countries": 8}, {"date": "2026-09-18", "articles": 35, "countries": 10}, {"date": "2026-09-17", "articles": 20, "countries": 6}, {"date": "2026-09-16", "articles": 28, "countries": 11}, {"date": "2026-09-15", "articles": 24, "countries": 9}, {"date": "2026-09-14", "articles": 18, "countries": 7}, {"date": "2026-09-13", "articles": 30, "countries": 11}, {"date": "2026-09-12", "articles": 22, "countries": 8}, {"date": "2026-09-11", "articles": 23, "countries": 10}, {"date": "2026-09-10", "articles": 14, "countries": 7}, {"date": "2026-09-09", "articles": 20, "countries": 8}, {"date": "2026-09-08", "articles": 15, "countries": 6}, {"date": "2026-09-07", "articles": 20, "countries": 8}, {"date": "2026-09-06", "articles": 22, "countries": 11}, {"date": "2026-09-05", "articles": 21, "countries": 10}, {"date": "2026-09-04", "articles": 27, "countries": 11}, {"date": "2026-09-03", "articles": 24, "countries": 9}, {"date": "2026-09-02", "articles": 31, "countries": 11}, {"date": "2026-09-01", "articles": 38, "countries": 12}, {"date": "2026-08-31", "articles": 34, "countries": 11}, {"date": "2026-08-30", "articles": 37, "countries": 9}, {"date": "2026-08-29", "articles": 56, "countries": 11}, {"date": "2026-08-28", "articles": 51, "countries": 11}, {"date": "2026-08-27", "articles": 54, "countries": 10}, {"date": "2026-08-26", "articles": 42, "countries": 11}, {"date": "2026-08-25", "articles": 29, "countries": 10}, {"date": "2026-08-24", "articles": 25, "countries": 10}, {"date": "2026-08-23", "articles": 12, "countries": 7}, {"date": "2026-08-22", "articles": 38, "countries": 10}, {"date": "2026-08-21", "articles": 31, "countries": 11}, {"date": "2026-08-20", "articles": 29, "countries": 9}, {"date": "2026-08-19", "articles": 17, "countries": 8}, {"date": "2026-08-18", "articles": 17, "countries": 9}, {"date": "2026-08-17", "articles": 5, "countries": 5}, {"date": "2026-08-16", "articles": 16, "countries": 7}, {"date": "2026-08-15", "articles": 29, "countries": 8}, {"date": "2026-08-14", "articles": 29, "countries": 10}, {"date": "2026-08-13", "articles": 29, "countries": 8}, {"date": "2026-08-12", "articles": 17, "countries": 8}, {"date": "2026-08-11", "articles": 28, "countries": 9}, {"date": "2026-08-10", "articles": 26, "countries": 7}, {"date": "2026-08-09", "articles": 28, "countries": 10}, {"date": "2026-08-08", "articles": 17, "countries": 7}, {"date": "2026-08-07", "articles": 23, "countries": 8}, {"date": "2026-08-06", "articles": 19, "countries": 8}, {"date": "2026-08-05", "articles": 16, "countries": 8}, {"date": "2026-08-04", "articles": 11, "countries": 6}, {"date": "2026-08-03", "articles": 16, "countries": 6}, {"date": "2026-08-02", "articles": 10, "countries": 6}, {"date": "2026-08-01", "articles": 21, "countries": 8}, {"date": "2026-07-31", "articles": 25, "countries": 8}, {"date": "2026-07-30", "articles": 24, "countries": 8}, {"date": "2026-07-29", "articles": 20, "countries": 7}, {"date": "2026-07-28", "articles": 23, "countries": 7}, {"date": "2026-07-27", "articles": 19, "countries": 7}, {"date": "2026-07-26", "articles": 12, "countries": 5}, {"date": "2026-07-25", "articles": 22, "countries": 7}, {"date": "2026-07-24", "articles": 25, "countries": 8}, {"date": "2026-07-23", "articles": 20, "countries": 8}, {"date": "2026-07-22", "articles": 27, "countries": 8}, {"date": "2026-07-21", "articles": 26, "countries": 7}, {"date": "2026-07-20", "articles": 18, "countries": 8}, {"date": "2026-07-19", "articles": 15, "countries": 7}, {"date": "2026-07-18", "articles": 35, "countries": 10}, {"date": "2026-07-17", "articles": 25, "countries": 7}, {"date": "2026-07-16", "articles": 25, "countries": 7}, {"date": "2026-07-15", "articles": 12, "countries": 8}, {"date": "2026-07-14", "articles": 16, "countries": 7}, {"date": "2026-07-13", "articles": 20, "countries": 7}, {"date": "2026-07-12", "articles": 29, "countries": 11}, {"date": "2026-07-11", "articles": 39, "countries": 10}, {"date": "2026-07-10", "articles": 31, "countries": 9}, {"date": "2026-07-09", "articles": 19, "countries": 6}, {"date": "2026-07-08", "articles": 29, "countries": 10}, {"date": "2026-07-07", "articles": 35, "countries": 8}, {"date": "2026-07-06", "articles": 24, "countries": 9}, {"date": "2026-07-05", "articles": 13, "countries": 4}, {"date": "2026-07-04", "articles": 20, "countries": 8}, {"date": "2026-07-03", "articles": 23, "countries": 11}, {"date": "2026-07-02", "articles": 20, "countries": 7}, {"date": "2026-07-01", "articles": 24, "countries": 7}, {"date": "2026-06-30", "articles": 25, "countries": 7}, {"date": "2026-06-29", "articles": 10, "countries": 7}, {"date": "2026-06-28", "articles": 27, "countries": 10}, {"date": "2026-06-27", "articles": 33, "countries": 10}, {"date": "2026-06-26", "articles": 23, "countries": 7}, {"date": "2026-06-25", "articles": 21, "countries": 7}, {"date": "2026-06-24", "articles": 24, "countries": 9}, {"date": "2026-06-23", "articles": 24, "countries": 10}, {"date": "2026-06-22", "articles": 8, "countries": 6}, {"date": "2026-06-21", "articles": 13, "countries": 9}, {"date": "2026-06-20", "articles": 10, "countries": 7}, {"date": "2026-06-19", "articles": 19, "countries": 10}, {"date": "2026-06-18", "articles": 25, "countries": 8}, {"date": "2026-06-17", "articles": 17, "countries": 7}, {"date": "2026-06-16", "articles": 24, "countries": 7}, {"date": "2026-06-15", "articles": 22, "countries": 6}, {"date": "2026-06-14", "articles": 12, "countries": 8}, {"date": "2026-06-13", "articles": 12, "countries": 7}, {"date": "2026-06-12", "articles": 20, "countries": 8}, {"date": "2026-06-11", "articles": 25, "countries": 7}];
+
+function escapeHtml(text) {
+    if(!text)return'';
+    var d=document.createElement('div');d.textContent=text;return d.innerHTML;
+}
+
+function render() {
+    if(!DATA.length){
+        document.getElementById('summaryBar').innerHTML='<span>⚠️ 今日未抓到涉华新闻，请稍后再试</span>';
+        return;
+    }
+
+    var countries=[...new Set(DATA.map(function(a){return a.country||'未知'}))];
+    document.getElementById('summaryBar').innerHTML=
+        '<span>📅 <strong>'+DATE+'</strong></span>'+
+        '<span>📰 <strong>'+DATA.length+'</strong> 篇</span>'+
+        '<span>🌍 <strong>'+countries.length+'</strong> 个国家/地区</span>'+
+        '<span>🔗 来源: RSS + Google News</span>';
+
+    var sel=document.getElementById('countryFilter');
+    sel.innerHTML='<option value="all">🌍 全部 ('+DATA.length+')</option>';
+    countries.forEach(function(c){
+        var n=DATA.filter(function(a){return a.country===c}).length;
+        sel.innerHTML+='<option value="'+escapeHtml(c)+'">'+escapeHtml(c)+' ('+n+')</option>';
+    });
+
+    var grouped={};
+    DATA.forEach(function(a){
+        var k=a.country||'未知';
+        if(!grouped[k])grouped[k]=[];
+        grouped[k].push(a);
+    });
+
+    var h='';
+    for(var c in grouped){
+        var arts=grouped[c];
+        h+='<div class="country-group"><div class="country-header">'+escapeHtml(c)+'<span class="count">'+arts.length+' 篇</span></div>';
+        arts.forEach(function(a){
+            var txt=(a.title+' '+a.summary).toLowerCase();
+            h+='<div class="card" data-country="'+escapeHtml(c)+'" data-search="'+escapeHtml(txt)+'">';
+            h+='<div class="card-title"><a href="'+escapeHtml(a.link||'#')+'" target="_blank" rel="noopener">'+escapeHtml(a.title)+'</a></div>';
+            h+='<div class="card-meta">';
+            h+='<span class="tag tag-source">'+escapeHtml(a.source||c)+'</span>';
+            if(a.via)h+='<span class="tag tag-via">'+escapeHtml(a.via)+'</span>';
+            h+='</div>';
+            if(a.summary)h+='<div class="card-summary">'+escapeHtml(a.summary)+'</div>';
+            h+='<div class="card-link"><a href="'+escapeHtml(a.link||'#')+'" target="_blank" rel="noopener">阅读原文 →</a></div>';
+            h+='</div>';
+        });
+        h+='</div>';
+    }
+    document.getElementById('articlesContainer').innerHTML=h;
+}
+
+function filter() {
+    var t=(document.getElementById('searchBox').value||'').toLowerCase().trim();
+    var c=document.getElementById('countryFilter').value;
+    var vis=false;
+    document.querySelectorAll('.card').forEach(function(card){
+        var ok=true;
+        if(c!=='all'&&card.dataset.country!==c)ok=false;
+        if(t&&ok&&(card.dataset.search||'').indexOf(t)===-1)ok=false;
+        card.style.display=ok?'':'none';
+        if(ok)vis=true;
+    });
+    document.querySelectorAll('.country-group').forEach(function(g){
+        var v=g.querySelectorAll('.card:not([style*="display: none"])').length;
+        g.style.display=v>0?'':'none';
+    });
+    document.getElementById('noResults').style.display=vis?'none':'block';
+}
+
+document.addEventListener('DOMContentLoaded',function(){
+    try{if(localStorage.getItem('nt')==='dark'){document.documentElement.setAttribute('data-theme','dark');document.getElementById('themeToggle').textContent='☀️'}}catch(e){}
+    render();
+    initDateNav();
+    document.getElementById('themeToggle').addEventListener('click',function(){
+        var n=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';
+        document.documentElement.setAttribute('data-theme',n);
+        this.textContent=n==='dark'?'☀️':'🌙';
+        try{localStorage.setItem('nt',n)}catch(e){}
+    });
+    var t;document.getElementById('searchBox').addEventListener('input',function(){clearTimeout(t);t=setTimeout(filter,250)});
+    document.getElementById('countryFilter').addEventListener('change',filter);
+    document.addEventListener('keydown',function(e){
+        if((e.ctrlKey||e.metaKey)&&e.key==='k'){e.preventDefault();document.getElementById('searchBox').focus()}
+        if((e.ctrlKey||e.metaKey)&&e.key==='d'&&!e.shiftKey){e.preventDefault();document.getElementById('themeToggle').click()}
+    });
+    console.log('📰 '+DATA.length+' 篇新闻');
+});
+
+function initDateNav(){
+    if(!ALL_DATES||!ALL_DATES.length)return;
+    // 找到当天在所有日期中的索引
+    var curIdx=-1;
+    for(var i=0;i<ALL_DATES.length;i++){if(ALL_DATES[i].date===DATE){curIdx=i;break;}}
+
+    // 填充日期下拉框
+    var sel=document.getElementById('datePicker');
+    ALL_DATES.forEach(function(d){
+        var opt=document.createElement('option');
+        opt.value=d.date;
+        // 显示格式: "6月12日 · 16篇 · 8国"
+        var parts=d.date.split('-');
+        var label=parseInt(parts[1])+'月'+parseInt(parts[2])+'日 · '+d.articles+'篇 · '+d.countries+'国';
+        if(d.date===DATE)label='📍 '+label;
+        opt.textContent=label;
+        if(d.date===DATE)opt.selected=true;
+        sel.appendChild(opt);
+    });
+    sel.addEventListener('change',function(){
+        var v=this.value;
+        if(v!==DATE)window.location.href='news_'+v+'.html';
+    });
+
+    // 前后天按钮
+    var btnPrev=document.getElementById('btnPrev');
+    var btnNext=document.getElementById('btnNext');
+    if(curIdx<=0)btnPrev.classList.add('disabled');
+    else btnPrev.addEventListener('click',function(e){e.preventDefault();if(curIdx>0)window.location.href='news_'+ALL_DATES[curIdx-1].date+'.html';});
+    if(curIdx>=ALL_DATES.length-1)btnNext.classList.add('disabled');
+    else btnNext.addEventListener('click',function(e){e.preventDefault();if(curIdx<ALL_DATES.length-1)window.location.href='news_'+ALL_DATES[curIdx+1].date+'.html';});
+
+    // 键盘左右箭头翻页
+    document.addEventListener('keydown',function(e){
+        if(e.target.tagName==='INPUT'||e.target.tagName==='SELECT')return;
+        if(e.key==='ArrowLeft'&&curIdx>0)window.location.href='news_'+ALL_DATES[curIdx-1].date+'.html';
+        if(e.key==='ArrowRight'&&curIdx<ALL_DATES.length-1)window.location.href='news_'+ALL_DATES[curIdx+1].date+'.html';
+    });
+}
+</script>
+</body>
+</html>
